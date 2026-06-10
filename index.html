@@ -628,9 +628,10 @@
 <footer>© 2026 Conditio &nbsp;·&nbsp; Built for founders and ops teams</footer>
 
 <script>
-  // Animate score counter on load
-  window.addEventListener('load', () => {
+  // Animate score counter
+  function animateScore() {
     const el = document.getElementById('score-counter');
+    if (!el) return;
     const target = 7.4;
     const duration = 1200;
     const start = performance.now();
@@ -642,8 +643,9 @@
       if (progress < 1) requestAnimationFrame(update);
       else el.textContent = target.toFixed(1);
     }
-    setTimeout(() => requestAnimationFrame(update), 400);
-  });
+    requestAnimationFrame(update);
+  }
+  setTimeout(animateScore, 500);
 </script>
 
 </body>
