@@ -441,6 +441,7 @@
     <a href="#how" id="t-nav-how">How it works</a>
     <a href="#pricing" id="t-nav-pricing">Pricing</a>
     <a href="#faq" id="t-nav-faq">FAQ</a>
+    <a href="#blog" id="t-nav-blog">Blog</a>
     <select class="lang-select" id="nav-lang" onchange="changeLang(this.value)" aria-label="Language">
       <option value="en">🇬🇧 EN</option>
       <option value="en-gb">🏴󠁧󠁢󠁥󠁮󠁧󠁿 EN-GB</option>
@@ -953,6 +954,7 @@ function applyLang(lang) {
   s('t-nav-how', t.nav_how);
   s('t-nav-pricing', t.nav_pricing);
   s('t-nav-faq', t.nav_faq);
+  s('t-nav-blog', t.nav_blog || 'Blog');
   s('t-nav-cta', t.nav_cta);
   s('t-hero-eyebrow', t.eyebrow);
   h('t-hero-h1', t.h1 + '<br><em id="t-hero-h1-em">' + t.h1_em + '</em>');
