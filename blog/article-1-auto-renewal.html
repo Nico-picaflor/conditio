@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>The Auto-Renewal Trap | Conditio</title>
+<meta name="description" content="Auto-renewal clauses are buried in 69% of software contracts. Real cases, red flags, and how to protect your company."/>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ===== CONDITIO EDITORIAL — unified Apple system (covers all article class vocabularies) ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#1d1d1f;background:#fff;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;font-size:18px;line-height:1.72;letter-spacing:-0.003em}
+
+/* reading progress */
+.reading-progress{position:fixed;top:0;left:0;height:3px;width:0;background:#0071e3;z-index:200;transition:width .08s linear}
+
+/* lang bar */
+.lang-bar{background:#f5f5f7;border-bottom:0.5px solid #d2d2d7;padding:8px 2rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.lang-bar span,.lang-bar-label{color:#86868b;font-size:12px;font-weight:500;letter-spacing:.02em;text-transform:none;margin-right:4px}
+.lb{background:#fff;border:0.5px solid #d2d2d7;color:#6e6e73;font-size:12px;font-weight:500;padding:3px 10px;border-radius:980px;cursor:pointer;font-family:inherit;transition:all .15s}
+.lb:hover{border-color:#0071e3;color:#0071e3}
+.lb.on{background:#0071e3;border-color:#0071e3;color:#fff}
+
+/* nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.85);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:0.5px solid #d2d2d7;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:54px}
+.logo{font-family:'Inter',sans-serif;font-size:18px;font-weight:600;color:#1d1d1f;letter-spacing:-.02em;text-decoration:none}
+.logo em{font-style:normal;color:#0071e3}
+.nav-btn,.ncta{background:#0071e3;color:#fff;border:none;border-radius:980px;padding:8px 17px;font-size:13px;font-weight:500;cursor:pointer;transition:background .15s;font-family:inherit;text-decoration:none;display:inline-block}
+.nav-btn:hover,.ncta:hover{background:#0077ed;opacity:1}
+
+/* hero */
+.hero{max-width:720px;margin:0 auto;padding:4.5rem 2rem 2.5rem}
+.eyebrow,.tag{display:inline-block;white-space:nowrap;background:rgba(0,113,227,0.08);color:#0071e3;font-size:13px;font-weight:500;letter-spacing:.01em;text-transform:none;padding:5px 13px;border-radius:980px;margin-bottom:1.5rem}
+.hero h1,h1{font-family:'Inter',sans-serif;font-size:clamp(32px,5.2vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.06;color:#1d1d1f;margin-bottom:1.4rem}
+.hero h1 em,h1 em,h1 .hl{font-style:normal;font-weight:600;color:#0071e3}
+.hero-sub,.sub{font-size:21px;font-weight:300;color:#6e6e73;line-height:1.5;margin-bottom:2rem;border-left:none;padding-left:0}
+.hero-meta,.meta{display:flex;align-items:center;gap:1.1rem;font-size:13.5px;color:#86868b;padding-bottom:2rem;border-bottom:0.5px solid #d2d2d7}
+.meta-dot,.dot{width:3px;height:3px;border-radius:50%;background:#c7c7cc}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:1px;background:#e8e8ed;border:0.5px solid #e8e8ed;border-radius:18px;overflow:hidden;margin:2.25rem 0}
+.stat{background:#fff;padding:1.6rem 1.4rem;text-align:center}
+.stat-num,.sn{font-family:'Inter',sans-serif;font-size:42px;font-weight:600;letter-spacing:-.03em;color:#0071e3;line-height:1;margin-bottom:7px}
+.stat-num.red,.sn.red{color:#ff3b30}
+.stat-label,.sl{font-size:13px;color:#86868b;font-weight:300;line-height:1.45}
+
+/* body */
+.body{max-width:720px;margin:0 auto;padding:2.5rem 2rem 5rem}
+.body h2{font-family:'Inter',sans-serif;font-size:clamp(24px,3.6vw,33px);font-weight:600;letter-spacing:-.025em;color:#1d1d1f;margin:3rem 0 1rem;line-height:1.12}
+.body h3{font-size:18px;font-weight:600;color:#1d1d1f;margin:1.6rem 0 .5rem;letter-spacing:-.01em}
+.body p{margin-bottom:1.35rem;color:#3a3a3c;font-weight:300}
+.body p strong{color:#1d1d1f;font-weight:600}
+#intro{font-size:20px;color:#6e6e73;font-weight:300;line-height:1.55}
+
+/* case / scenario callout (neutral, works for ⚠ and ✓) */
+.case{background:#f7f7f8;border:0.5px solid #ececf0;border-left:3px solid #0071e3;border-radius:0 14px 14px 0;padding:1.5rem 1.6rem;margin:2rem 0}
+.case-lbl{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#86868b;margin-bottom:.7rem}
+.case p{color:#1d1d1f;margin:0;line-height:1.62;font-weight:300}
+
+/* info / tip / warn */
+.info,.warn{background:rgba(0,113,227,0.045);border:0.5px solid rgba(0,113,227,0.14);border-radius:14px;padding:1.5rem 1.6rem;margin:2rem 0}
+.info-lbl,.warn-lbl{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#0071e3;margin-bottom:.7rem}
+.info p,.warn p{color:#1d1d1f;margin:0;line-height:1.62;font-weight:300}
+
+/* contract excerpt */
+.clause{background:#fbfbfd;border:0.5px solid #e3e3e8;border-left:3px solid #c7c7cc;border-radius:0 12px 12px 0;padding:1.3rem 1.5rem;margin:1.5rem 0;font-family:'SFMono-Regular','Menlo','Courier New',monospace;font-size:14.5px;color:#3a3a3c;line-height:1.65}
+
+/* checklist */
+.chk{list-style:none;margin:1rem 0 1.6rem}
+.chk li{display:flex;align-items:flex-start;gap:11px;padding:11px 0;border-bottom:0.5px solid #e8e8ed;font-size:16px;color:#3a3a3c;font-weight:300;line-height:1.5}
+.chk li:last-child{border-bottom:none}
+.chk li::before{content:"✓";color:#0071e3;font-weight:700;flex-shrink:0;font-size:14px;margin-top:3px}
+
+/* tables: .tbl (art1) + .compare (art2) */
+.tbl-wrap{border:0.5px solid #d2d2d7;border-radius:14px;overflow:hidden;margin:1.5rem 0}
+.tbl,.compare{width:100%;border-collapse:collapse;font-size:15px;margin:1.5rem 0}
+.tbl{margin:0}
+.tbl th,.compare th{padding:11px 15px;font-size:13px;font-weight:600;letter-spacing:.01em;text-align:left;background:#f5f5f7;color:#6e6e73;border-bottom:0.5px solid #d2d2d7}
+.tbl td,.compare td{padding:12px 15px;font-size:14.5px;border-bottom:0.5px solid #e8e8ed;color:#3a3a3c;font-weight:300;vertical-align:top}
+.tbl tr:last-child td,.compare tr:last-child td{border-bottom:none}
+.compare td:first-child{color:#1d1d1f;font-weight:500}
+.td-red,.bad{color:#d70015!important;font-weight:500!important}
+.td-yellow{color:#b25e00!important;font-weight:500!important}
+.td-green,.good{color:#1a7f37!important;font-weight:500!important}
+
+/* step cards */
+.step{display:flex;gap:1.3rem;padding:1.5rem 1.6rem;border:0.5px solid #e8e8ed;border-radius:16px;margin:1.25rem 0;align-items:flex-start}
+.step-num{font-size:30px;font-weight:600;letter-spacing:-.03em;color:#0071e3;line-height:1;flex-shrink:0;width:38px;text-align:center}
+.step-content{flex:1}
+.step h3{font-size:18px;font-weight:600;color:#1d1d1f;margin:0 0 .4rem;letter-spacing:-.01em}
+.step p{color:#6e6e73;margin:0;font-size:15.5px;font-weight:300;line-height:1.55}
+
+/* clause cards (7 dangerous clauses) */
+.clause-card{border:0.5px solid #e8e8ed;border-radius:16px;padding:1.6rem;margin:1.4rem 0;position:relative}
+.clause-card-num,.clause-num{position:absolute;top:-13px;left:1.4rem;background:#0071e3;color:#fff;font-size:13px;font-weight:600;width:26px;height:26px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.clause-card h3{font-size:18px;font-weight:600;color:#1d1d1f;margin:.4rem 0 .5rem;letter-spacing:-.01em}
+.clause-card p{color:#6e6e73;font-size:15.5px;margin-bottom:.85rem;font-weight:300;line-height:1.55}
+.risk-badge{display:inline-block;white-space:nowrap;font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:6px;margin-bottom:.5rem}
+.risk-high{background:rgba(255,59,48,0.1);color:#d70015}
+.risk-med{background:rgba(255,159,10,0.12);color:#b25e00}
+.fix-box,.fix{background:rgba(52,199,89,0.07);border:0.5px solid rgba(52,199,89,0.22);border-left:3px solid #34c759;padding:.85rem 1.1rem;border-radius:0 11px 11px 0;font-size:14.5px;color:#1a5c2e;margin-top:.6rem;font-weight:300;line-height:1.55}
+.fix-box strong,.fix strong,#fix-label{color:#1a7f37;font-weight:600}
+
+/* keyword chips */
+.kw-list,.keyword-list{display:flex;flex-wrap:wrap;gap:8px;margin:1.25rem 0}
+.kw{background:#f5f5f7;color:#3a3a3c;font-size:13.5px;font-weight:400;padding:5px 13px;border-radius:980px;font-family:'SFMono-Regular','Menlo','Courier New',monospace;border:0.5px solid #e3e3e8}
+.kw.danger{background:rgba(255,59,48,0.06);color:#d70015;border-color:rgba(255,59,48,0.2)}
+
+/* data bars: .data-grid/.bar-* (art1) + .data-row/.data-bar/.data-fill (art5) */
+.data-grid,.data-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:1.5rem 0}
+.data-box{background:#f7f7f8;border:0.5px solid #ececf0;border-radius:14px;padding:1.3rem}
+.data-box h3{font-size:14.5px;font-weight:600;color:#1d1d1f;margin-bottom:.85rem;letter-spacing:-.01em}
+.bar-track,.data-bar{height:7px;background:#e3e3e8;border-radius:4px;margin:.5rem 0 .4rem;overflow:hidden}
+.bar-fill,.data-fill{height:100%;background:#0071e3;border-radius:4px}
+.bar-labels,.data-label{display:flex;justify-content:space-between;font-size:12.5px;color:#86868b;font-weight:400}
+.data-label span:last-child{color:#0071e3;font-weight:600}
+
+/* CTA — dark premium block (ties to landing) */
+.cta-block,.cta{background:#161618;border-radius:20px;padding:2.75rem 2.5rem;text-align:center;margin:3.5rem 0}
+.cta-block h3,.cta h3{font-family:'Inter',sans-serif;font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-.025em;color:#fff;margin-bottom:.7rem;line-height:1.12}
+.cta-block p,.cta p{font-size:17px;font-weight:300;color:rgba(255,255,255,0.66);margin-bottom:1.6rem;max-width:480px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-block;background:#0071e3;color:#fff;border:none;border-radius:980px;padding:14px 30px;font-size:17px;font-weight:400;cursor:pointer;font-family:inherit;text-decoration:none;transition:background .15s}
+.cta-btn:hover{background:#0077ed;opacity:1}
+
+/* footer */
+footer{padding:2rem;text-align:center;font-size:13px;color:#86868b;border-top:0.5px solid #d2d2d7}
+footer a{color:inherit;text-decoration:none}
+
+@media(max-width:600px){
+  nav,.lang-bar{padding-left:1.25rem;padding-right:1.25rem}
+  .hero,.body{padding-left:1.25rem;padding-right:1.25rem}
+  .step{flex-direction:column;gap:.75rem}
+  .data-grid,.data-row{grid-template-columns:1fr}
+  .compare,.tbl{font-size:13px}
+  body{font-size:17px}
+}
+</style>
+</head>
+<body>
+<div class="lang-bar">
+  <span class="lang-bar-label">🌐</span>
+  <button class="lb on" onclick="L('en')">EN</button>
+  <button class="lb" onclick="L('es')">ES</button>
+  <button class="lb" onclick="L('es-latam')">ES-LAT</button>
+  <button class="lb" onclick="L('fr')">FR</button>
+  <button class="lb" onclick="L('pt')">PT</button>
+  <button class="lb" onclick="L('pt-br')">PT-BR</button>
+  <button class="lb" onclick="L('de')">DE</button>
+  <button class="lb" onclick="L('it')">IT</button>
+  <button class="lb" onclick="L('nl')">NL</button>
+  <button class="lb" onclick="L('nb')">NB</button>
+  <button class="lb" onclick="L('da')">DA</button>
+  <button class="lb" onclick="L('pl')">PL</button>
+  <button class="lb" onclick="L('cs')">CS</button>
+  <button class="lb" onclick="L('hu')">HU</button>
+  <button class="lb" onclick="L('hr')">HR</button>
+  <button class="lb" onclick="L('sl')">SL</button>
+  <button class="lb" onclick="L('bg')">BG</button>
+  <button class="lb" onclick="L('ca')">CA</button>
+  <button class="lb" onclick="L('id')">ID</button>
+  <button class="lb" onclick="L('zh')">ZH</button>
+  <button class="lb" onclick="L('ja')">JA</button>
+  <button class="lb" onclick="L('ko')">KO</button>
+  <button class="lb" onclick="L('ar')">AR</button>
+</div>
+<nav>
+  <a href="https://conditio.org" class="logo">Condi<em>tio</em></a>
+  <a href="https://conditio-backend-production.up.railway.app/login" class="nav-btn" id="ncta">Analyze your contracts free</a>
+</nav>
+
+<section class="hero">
+  <span class="eyebrow" id="eyebrow">Contract Risk</span>
+  <h1 id="h1">The Auto-Renewal Trap:<br><em>How a Single Clause Cost a Startup $72,000</em></h1>
+  <p class="hero-sub" id="sub">Auto-renewal clauses are buried in 69% of software contracts. Most companies only discover them when it's too late — after the invoice arrives for another full year they didn't plan for.</p>
+  <div class="hero-meta">
+    <span id="mdate">June 2025</span><span class="meta-dot"></span>
+    <span id="mread">8 min read</span><span class="meta-dot"></span>
+    <span>Conditio Research</span>
+  </div>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">69%</div><div class="stat-label" id="s1">of software contracts auto-renew by default</div></div>
+    <div class="stat"><div class="stat-num red">$72K</div><div class="stat-label" id="s2">accidentally renewed by one growth-stage startup</div></div>
+    <div class="stat"><div class="stat-num">30+</div><div class="stat-label" id="s3">U.S. states now regulate auto-renewal disclosures</div></div>
+  </div>
+</section>
+
+<article class="body">
+  <h2 id="h2a">It Started With a DocuSign</h2>
+  <p id="p1">A growth-stage startup received a DocuSign link from a data enrichment vendor. The contract looked standard — a one-year term, a reasonable price, and language about automatic renewal buried somewhere in section 9. Nobody flagged it. The founder clicked through.</p>
+  <p id="p2">Twelve months later, the renewal date passed while the team was heads-down on a product launch. The $72,000 annual subscription renewed automatically — at a rate they hadn't re-evaluated and with a notice window that had already closed. The vendor refused to waive it. They paid for a full year they didn't need.</p>
+  <p id="p3">This story isn't unusual. According to industry data, <strong>missed renewals can cost a $50M company up to $4.5 million annually</strong> when compounded across all vendors.</p>
+
+  <div class="case"><div class="case-lbl" id="cl1">⚠ Real Case</div><p id="ct1">A legal team at a mid-size company missed the 60-day cancellation window for a compliance tool. The vendor refused to waive the clause. They paid for another full year — at a 20% price increase.</p></div>
+
+  <h2 id="h2b">What the Clause Actually Says</h2>
+  <p id="p4">Here's a vendor-favorable auto-renewal clause in practice:</p>
+  <div class="clause" id="clause">"This Agreement shall automatically renew for successive periods equal to the Initial Term unless either party provides written notice of non-renewal at least thirty (30) days prior to the end of the then-current term. Upon each renewal, Vendor may adjust the Subscription Fees to reflect Vendor's then-current pricing."</div>
+  <p id="p5">This single paragraph does three things: locks you in for another full year by default, gives you only a 30-day window to escape, and lets the vendor raise prices unilaterally.</p>
+
+  <div class="info"><div class="info-lbl" id="wl">💡 What to look for</div><p id="wt">The danger isn't the renewal itself — it's the combination of a short notice window (30 days instead of 90), no price cap, and language that makes your silence into consent.</p></div>
+
+  <h2 id="h2c">The Three Variations That Trap Companies</h2>
+  <h3 id="h3a">1. The short window</h3>
+  <p id="p6">A 30-day notice window sounds reasonable until you realize most teams don't track contract dates with that precision. By the time someone notices the upcoming renewal, the deadline has passed.</p>
+  <h3 id="h3b">2. The price escalator</h3>
+  <p id="p7">Many clauses allow the vendor to adjust pricing at renewal — 10–30% increases with no negotiation required.</p>
+  <h3 id="h3c">3. The silent reset</h3>
+  <p id="p8">Some contracts renew for the full original term, not month-to-month. Missing the window costs you an entire year, not one month.</p>
+
+  <h2 id="h2d">How to Protect Your Company</h2>
+  <p id="p9">Before signing any vendor contract, check these five things:</p>
+  <ul class="chk" id="chk">
+    <li>What is the notice period? Anything under 60 days is vendor-favorable — push for 90</li>
+    <li>Does the price change on renewal? Demand a cap or fixed rate for at least one cycle</li>
+    <li>What does the renewal term look like? Avoid clauses that renew for the full original term</li>
+    <li>Is there a termination for convenience clause? This lets you exit early if your needs change</li>
+    <li>Who owns tracking this date internally? If no one does, you will miss it</li>
+  </ul>
+
+  <div class="case"><div class="case-lbl" id="cl2">✓ Better clause</div><p id="ct2">"This Agreement renews for successive one-year terms unless either party provides written notice at least 90 days prior to expiration. Fees for any renewal term shall not exceed the prior term's fees by more than 5%."</p></div>
+
+  <h2 id="h2e">The Real Cost Isn't the Invoice</h2>
+  <p id="p10">When a contract auto-renews unexpectedly, the invoice is the most visible cost. But there are hidden ones: time spent negotiating out of a locked contract, opportunity cost of budget tied up in a tool you've stopped using.</p>
+  <p id="p11">The companies that get burned most are the ones moving fastest — where nobody owns vendor contract management because everyone is building the product.</p>
+
+  <div class="cta-block">
+    <h3 id="ctah">Does your next contract have a renewal trap?</h3>
+    <p id="ctap">Conditio scans your contracts for auto-renewal clauses, short notice windows, and price escalators — and flags them before you sign.</p>
+    <a href="https://conditio-backend-production.up.railway.app/login" class="cta-btn" id="ctabtn">Analyze a contract free →</a>
+  </div>
+</article>
+
+<footer>© 2025 Conditio &nbsp;·&nbsp; <a href="https://conditio.org">conditio.org</a> &nbsp;·&nbsp; <a href="https://conditio.org/privacy">Privacy</a></footer>
+
+<script>
+const T={
+en:{eyebrow:"Contract Risk",h1:'The Auto-Renewal Trap:<br><em>How a Single Clause Cost a Startup $72,000</em>',sub:"Auto-renewal clauses are buried in 69% of software contracts. Most companies only discover them when it's too late.",mdate:"June 2025",mread:"8 min read",s1:"of software contracts auto-renew by default",s2:"accidentally renewed by one growth-stage startup",s3:"U.S. states now regulate auto-renewal disclosures",h2a:"It Started With a DocuSign",p1:"A growth-stage startup received a DocuSign link from a data enrichment vendor. The contract looked standard — one year, reasonable price, and renewal language buried in section 9. Nobody flagged it.",p2:"Twelve months later, the renewal date passed during a product launch. The $72,000 subscription renewed automatically. The vendor refused to waive it. They paid for a full year they didn't need.",p3:"Missed renewals can cost a $50M company up to $4.5 million annually when compounded across all vendors.",cl1:"⚠ Real Case",ct1:"A legal team missed the 60-day cancellation window for a compliance tool. The vendor refused to waive the clause. They paid for another full year at a 20% price increase.",h2b:"What the Clause Actually Says",p4:"Here's a vendor-favorable auto-renewal clause in practice:",clause:"\"This Agreement shall automatically renew for successive periods equal to the Initial Term unless either party provides written notice of non-renewal at least thirty (30) days prior to the end of the then-current term. Upon each renewal, Vendor may adjust the Subscription Fees to reflect Vendor's then-current pricing.\"",p5:"This paragraph locks you in for another year by default, gives you only 30 days to escape, and lets the vendor raise prices unilaterally.",wl:"💡 What to look for",wt:"The danger is the combination of a short notice window (30 days instead of 90), no price cap, and language that makes your silence into consent.",h2c:"The Three Variations That Trap Companies",h3a:"1. The short window",p6:"30 days sounds reasonable until you realize most teams don't track contract dates with that precision.",h3b:"2. The price escalator",p7:"Many clauses allow the vendor to adjust pricing at renewal — 10–30% increases with no negotiation.",h3c:"3. The silent reset",p8:"Some contracts renew for the full original term. Missing the window costs you an entire year, not one month.",h2d:"How to Protect Your Company",p9:"Before signing any vendor contract, check these five things:",chk:["Notice period under 60 days? Vendor-favorable — push for 90","Price change on renewal? Demand a cap or fixed rate for at least one cycle","Renewal for the full original term? Avoid it","Termination for convenience clause? Make sure it exists","Who tracks this date internally? Assign someone"],cl2:"✓ Better clause",ct2:"\"This Agreement renews for successive one-year terms unless either party provides written notice at least 90 days prior to expiration. Fees for any renewal term shall not exceed the prior term's fees by more than 5%.\"",h2e:"The Real Cost Isn't the Invoice",p10:"When a contract auto-renews unexpectedly, the invoice is the most visible cost. But there are hidden ones: time negotiating out of a locked contract, budget tied up in tools you no longer use.",p11:"The companies that get burned most are the ones moving fastest — where nobody manages vendor contracts because everyone is building the product.",ctah:"Does your next contract have a renewal trap?",ctap:"Conditio scans your contracts for auto-renewal clauses, short notice windows, and price escalators — and flags them before you sign.",ctabtn:"Analyze a contract free →",ncta:"Analyze your contracts free"},
+es:{eyebrow:"Riesgo Contractual",h1:'La Trampa de Renovación Automática:<br><em>Cómo una Sola Cláusula le Costó $72,000 a una Startup</em>',sub:"Las cláusulas de renovación automática están enterradas en el 69% de los contratos de software. La mayoría las descubre demasiado tarde.",mdate:"Junio 2025",mread:"8 min de lectura",s1:"de los contratos de software se renuevan automáticamente",s2:"renovados accidentalmente por una startup en crecimiento",s3:"estados de EE.UU. regulan ahora las renovaciones automáticas",h2a:"Todo Empezó con un DocuSign",p1:"Una startup en crecimiento recibió un enlace DocuSign de un proveedor. El contrato parecía estándar — un año, precio razonable, y lenguaje de renovación enterrado en la sección 9.",p2:"Doce meses después la fecha de renovación pasó durante un lanzamiento. La suscripción de $72,000 se renovó automáticamente. El proveedor se negó a ceder. Pagaron un año completo que no necesitaban.",p3:"Las renovaciones perdidas pueden costarle a una empresa de $50M hasta $4.5 millones anuales.",cl1:"⚠ Caso Real",ct1:"Un equipo legal se perdió el plazo de cancelación de 60 días de una herramienta de compliance. Tuvieron que pagar otro año completo con un aumento del 20%.",h2b:"Qué Dice la Cláusula Realmente",p4:"Así se ve una cláusula de renovación favorable al proveedor:",clause:"\"Este Acuerdo se renovará automáticamente por períodos iguales al Plazo Inicial a menos que cualquiera de las partes proporcione aviso escrito con al menos treinta (30) días de anticipación. En cada renovación, el Proveedor puede ajustar las Tarifas de Suscripción.\"",p5:"Este párrafo te bloquea por otro año por defecto, te da solo 30 días para salir y permite que el proveedor suba los precios unilateralmente.",wl:"💡 Qué buscar",wt:"El peligro es la combinación de aviso corto (30 días en vez de 90), sin tope de precio y un lenguaje que convierte tu silencio en consentimiento.",h2c:"Las Tres Variantes que Atrapan Empresas",h3a:"1. La ventana corta",p6:"30 días suena razonable hasta que notas que la mayoría de equipos no hace seguimiento de fechas contractuales con esa precisión.",h3b:"2. El escalador de precios",p7:"Muchas cláusulas permiten al proveedor ajustar precios en la renovación — aumentos del 10-30% sin negociación.",h3c:"3. El reinicio silencioso",p8:"Algunos contratos se renuevan por el plazo original completo. Perder la ventana cuesta un año entero, no un mes.",h2d:"Cómo Proteger tu Empresa",p9:"Antes de firmar cualquier contrato, verifica estas cinco cosas:",chk:["Plazo de aviso menor a 60 días? Favorece al proveedor — exige 90","¿Cambia el precio en la renovación? Exige un tope para al menos un ciclo","¿Renueva por el plazo original completo? Evítalo","¿Hay cláusula de rescisión por conveniencia? Asegúrate de que exista","¿Quién hace seguimiento de esta fecha internamente? Asignarlo"],cl2:"✓ Mejor cláusula",ct2:"\"Este Acuerdo se renueva por plazos anuales salvo aviso escrito con al menos 90 días de anticipación. Las tarifas no excederán las del plazo anterior en más del 5%.\"",h2e:"El Costo Real No Es la Factura",p10:"Cuando un contrato se renueva inesperadamente, la factura es el costo más visible. Pero hay ocultos: tiempo negociando para salir y presupuesto inmovilizado en herramientas que ya no usas.",p11:"Las empresas que más sufren son las que van más rápido — donde nadie gestiona contratos porque todos están construyendo el producto.",ctah:"¿Tu próximo contrato tiene una trampa de renovación?",ctap:"Conditio escanea tus contratos en busca de cláusulas de renovación automática y las señala antes de que firmes.",ctabtn:"Analiza un contrato gratis →",ncta:"Analiza tus contratos gratis"},
+fr:{eyebrow:"Risque Contractuel",h1:'Le Piège du Renouvellement Automatique:<br><em>Comment une Clause a Coûté $72 000 à une Startup</em>',sub:"Les clauses de renouvellement automatique sont enfouies dans 69% des contrats logiciels. La plupart des entreprises ne les découvrent que trop tard.",mdate:"Juin 2025",mread:"8 min de lecture",s1:"des contrats logiciels se renouvellent automatiquement",s2:"renouvelés accidentellement par une startup en croissance",s3:"États américains réglementent les renouvellements automatiques",h2a:"Tout a commencé avec un DocuSign",p1:"Une startup a reçu un lien DocuSign d'un fournisseur de données. Le contrat semblait standard — un an, prix raisonnable, et clause de renouvellement automatique enfouie à la section 9.",p2:"Douze mois plus tard, la date de renouvellement est passée pendant un lancement produit. L'abonnement de 72 000 $ s'est renouvelé automatiquement. Ils ont payé une année complète dont ils n'avaient pas besoin.",p3:"Les renouvellements manqués peuvent coûter jusqu'à 4,5 millions de dollars par an à une entreprise de 50 M$.",cl1:"⚠ Cas Réel",ct1:"Une équipe juridique a manqué la fenêtre d'annulation de 60 jours pour un outil de conformité. Ils ont payé une année entière de plus avec 20% d'augmentation.",h2b:"Ce que dit vraiment la clause",p4:"Voici une clause de renouvellement favorable au fournisseur:",clause:"\"Le présent Accord se renouvellera automatiquement sauf si l'une des parties fournit un avis écrit de non-renouvellement au moins trente (30) jours avant la fin de la période en cours. Le Fournisseur peut ajuster les Frais d'Abonnement à chaque renouvellement.\"",p5:"Ce paragraphe vous bloque pour un an supplémentaire par défaut, ne vous donne que 30 jours pour sortir et laisse le fournisseur augmenter les prix unilatéralement.",wl:"💡 Ce qu'il faut vérifier",wt:"Le danger est la combinaison d'une fenêtre courte (30 jours au lieu de 90), sans plafond de prix, et d'un langage transformant votre silence en consentement.",h2c:"Les trois variantes qui piègent les entreprises",h3a:"1. La fenêtre courte",p6:"30 jours semble raisonnable jusqu'à ce que vous réalisiez que la plupart des équipes ne suivent pas les dates de contrat avec cette précision.",h3b:"2. L'escalateur de prix",p7:"Beaucoup de clauses permettent au fournisseur d'ajuster les prix au renouvellement — hausses de 10-30% sans négociation.",h3c:"3. La remise à zéro silencieuse",p8:"Certains contrats se renouvellent pour la durée complète originale. Manquer la fenêtre coûte une année entière.",h2d:"Comment protéger votre entreprise",p9:"Avant de signer tout contrat fournisseur, vérifiez ces cinq points:",chk:["Préavis inférieur à 60 jours? Favorable au fournisseur — négociez 90","Prix change au renouvellement? Exigez un plafond pour au moins un cycle","Renouvellement pour la durée complète? Évitez-le","Clause de résiliation pour convenance? Assurez-vous qu'elle existe","Qui suit cette date en interne? Désignez quelqu'un"],cl2:"✓ Meilleure clause",ct2:"\"Le présent Accord se renouvelle pour des périodes annuelles successives sauf préavis écrit d'au moins 90 jours. Les frais ne dépasseront pas ceux de la période précédente de plus de 5%.\"",h2e:"Le vrai coût n'est pas la facture",p10:"Quand un contrat se renouvelle inopinément, la facture est le coût le plus visible. Mais il y en a des cachés: temps de négociation, budget immobilisé dans des outils inutilisés.",p11:"Les entreprises les plus touchées sont celles qui avancent le plus vite — où personne ne gère les contrats fournisseurs car tous construisent le produit.",ctah:"Votre prochain contrat contient-il un piège de renouvellement?",ctap:"Conditio analyse vos contrats pour les clauses de renouvellement automatique et les signale avant que vous signiez.",ctabtn:"Analyser un contrat gratuitement →",ncta:"Analysez vos contrats gratuitement"},
+de:{eyebrow:"Vertragsrisiko",h1:'Die Auto-Verlängerungsfalle:<br><em>Wie eine Klausel ein Startup $72.000 kostete</em>',sub:"Automatische Verlängerungsklauseln sind in 69% der Softwareverträge versteckt. Die meisten Unternehmen entdecken sie zu spät.",mdate:"Juni 2025",mread:"8 Min. Lesezeit",s1:"der Softwareverträge verlängern sich automatisch",s2:"versehentlich verlängert von einem wachsenden Startup",s3:"US-Bundesstaaten regulieren nun automatische Verlängerungen",h2a:"Es begann mit einem DocuSign",p1:"Ein wachsendes Startup erhielt einen DocuSign-Link von einem Datenanbieter. Der Vertrag wirkte standard — ein Jahr, vernünftiger Preis, Verlängerungsklausel in Abschnitt 9 vergraben.",p2:"Zwölf Monate später verging das Verlängerungsdatum während eines Produktlaunchs. Das $72.000-Abonnement verlängerte sich automatisch. Der Anbieter weigerte sich. Sie zahlten für ein volles Jahr, das sie nicht brauchten.",p3:"Verpasste Verlängerungen können ein $50M-Unternehmen bis zu $4,5 Millionen jährlich kosten.",cl1:"⚠ Echter Fall",ct1:"Ein Rechtsteam verpasste das 60-Tage-Kündigungsfenster für ein Compliance-Tool. Sie zahlten ein weiteres volles Jahr mit 20% Preiserhöhung.",h2b:"Was die Klausel wirklich sagt",p4:"So sieht eine anbieterfreundliche automatische Verlängerungsklausel in der Praxis aus:",clause:"\"Diese Vereinbarung verlängert sich automatisch, es sei denn, eine der Parteien gibt mindestens dreißig (30) Tage vor Ablauf eine schriftliche Nichtverlängerungsmitteilung ab. Der Anbieter kann die Abonnementgebühren bei jeder Verlängerung anpassen.\"",p5:"Dieser Absatz sperrt Sie standardmäßig für ein weiteres Jahr, gibt Ihnen nur 30 Tage zum Aussteigen und erlaubt dem Anbieter, Preise einseitig zu erhöhen.",wl:"💡 Worauf zu achten ist",wt:"Die Gefahr ist die Kombination aus kurzem Kündigungsfenster (30 statt 90 Tage), keiner Preisobergrenze und Sprache, die Ihr Schweigen in Zustimmung verwandelt.",h2c:"Die drei Varianten, die Unternehmen in die Falle locken",h3a:"1. Das kurze Fenster",p6:"30 Tage klingt vernünftig, bis man merkt, dass die meisten Teams Vertragstermine nicht so genau verfolgen.",h3b:"2. Der Preiseskalator",p7:"Viele Klauseln erlauben dem Anbieter, Preise bei Verlängerung anzupassen — 10-30% Erhöhungen ohne Verhandlung.",h3c:"3. Der stille Reset",p8:"Manche Verträge verlängern sich für die volle ursprüngliche Laufzeit. Das Fenster zu verpassen kostet ein ganzes Jahr.",h2d:"Wie Sie Ihr Unternehmen schützen",p9:"Bevor Sie einen Lieferantenvertrag unterschreiben, prüfen Sie diese fünf Punkte:",chk:["Kündigungsfrist unter 60 Tagen? Begünstigt den Anbieter — fordern Sie 90","Preisänderung bei Verlängerung? Fordern Sie eine Obergrenze für mindestens einen Zyklus","Verlängerung für die volle ursprüngliche Laufzeit? Vermeiden","Kündigungsklausel aus freiem Willen? Sicherstellen dass vorhanden","Wer verfolgt dieses Datum intern? Jemanden beauftragen"],cl2:"✓ Bessere Klausel",ct2:"\"Diese Vereinbarung verlängert sich für aufeinanderfolgende Einjahresperioden, sofern keine Kündigung mindestens 90 Tage vor Ablauf erfolgt. Gebühren dürfen die der vorherigen Periode um nicht mehr als 5% übersteigen.\"",h2e:"Die wahren Kosten sind nicht die Rechnung",p10:"Wenn sich ein Vertrag unerwartet verlängert, ist die Rechnung der sichtbarste Kostenpunkt. Aber es gibt versteckte: Zeit für Verhandlungen, Budget in ungenutzten Tools gebunden.",p11:"Am stärksten betroffen sind die schnellsten Unternehmen — wo niemand Lieferantenverträge verwaltet, weil alle am Produkt arbeiten.",ctah:"Hat Ihr nächster Vertrag eine Verlängerungsfalle?",ctap:"Conditio scannt Ihre Verträge auf automatische Verlängerungsklauseln und markiert sie vor Ihrer Unterschrift.",ctabtn:"Vertrag kostenlos analysieren →",ncta:"Verträge kostenlos analysieren"},
+it:{eyebrow:"Rischio Contrattuale",h1:'La Trappola del Rinnovo Automatico:<br><em>Come una Clausola è Costata $72.000 a una Startup</em>',sub:"Le clausole di rinnovo automatico sono sepolte nel 69% dei contratti software. La maggior parte le scopre troppo tardi.",mdate:"Giugno 2025",mread:"8 min di lettura",s1:"dei contratti software si rinnovano automaticamente",s2:"rinnovati accidentalmente da una startup in crescita",s3:"stati USA regolamentano i rinnovi automatici",h2a:"Tutto è iniziato con un DocuSign",p1:"Una startup ha ricevuto un link DocuSign da un fornitore. Il contratto sembrava standard — un anno, prezzo ragionevole, clausola di rinnovo sepolta nella sezione 9.",p2:"Dodici mesi dopo la data di rinnovo è passata durante un lancio. L'abbonamento da $72.000 si è rinnovato automaticamente. Il fornitore si è rifiutato. Hanno pagato un anno che non serviva.",p3:"I rinnovi mancati possono costare fino a $4,5 milioni l'anno a un'azienda da $50M.",cl1:"⚠ Caso Reale",ct1:"Un team legale ha mancato la finestra di cancellazione di 60 giorni. Hanno pagato un altro anno con il 20% in più.",h2b:"Cosa dice davvero la clausola",p4:"Ecco una clausola di rinnovo favorevole al fornitore:",clause:"\"Il presente Accordo si rinnoverà automaticamente a meno che una delle parti non fornisca preavviso scritto di non rinnovo almeno trenta (30) giorni prima della fine del termine corrente. Il Fornitore può adeguare le Tariffe di Abbonamento ad ogni rinnovo.\"",p5:"Questo paragrafo ti blocca per un altro anno per impostazione predefinita, ti dà solo 30 giorni per uscire e consente al fornitore di aumentare i prezzi unilateralmente.",wl:"💡 Cosa verificare",wt:"Il pericolo è la combinazione di finestra corta (30 giorni invece di 90), nessun limite di prezzo e linguaggio che trasforma il tuo silenzio in consenso.",h2c:"Le tre varianti che intrappolano le aziende",h3a:"1. La finestra corta",p6:"30 giorni sembra ragionevole finché non realizzi che la maggior parte dei team non monitora le date dei contratti con quella precisione.",h3b:"2. L'escalator di prezzo",p7:"Molte clausole consentono al fornitore di adeguare i prezzi al rinnovo — aumenti del 10-30% senza negoziazione.",h3c:"3. Il reset silenzioso",p8:"Alcuni contratti si rinnovano per il termine originale completo. Perdere la finestra costa un anno intero.",h2d:"Come proteggere la tua azienda",p9:"Prima di firmare qualsiasi contratto, verifica questi cinque punti:",chk:["Preavviso sotto 60 giorni? Favorisce il fornitore — negozia 90","Prezzo cambia al rinnovo? Richiedi un limite per almeno un ciclo","Rinnovo per il termine originale completo? Evitalo","Clausola di rescissione per convenienza? Assicurati che esista","Chi monitora questa data internamente? Assegna qualcuno"],cl2:"✓ Clausola migliore",ct2:"\"Il presente Accordo si rinnova per termini annuali successivi salvo preavviso scritto di almeno 90 giorni. Le tariffe non supereranno quelle del periodo precedente di più del 5%.\"",h2e:"Il costo reale non è la fattura",p10:"Quando un contratto si rinnova inaspettatamente, la fattura è il costo più visibile. Ma ci sono costi nascosti: tempo di negoziazione, budget bloccato in strumenti inutilizzati.",p11:"Le aziende più colpite sono quelle che avanzano più velocemente — dove nessuno gestisce i contratti dei fornitori.",ctah:"Il tuo prossimo contratto ha una trappola di rinnovo?",ctap:"Conditio analizza i tuoi contratti per clausole di rinnovo automatico e le segnala prima che tu firmi.",ctabtn:"Analizza un contratto gratuitamente →",ncta:"Analizza i tuoi contratti gratuitamente"},
+pt:{eyebrow:"Risco Contratual",h1:'A Armadilha da Renovação Automática:<br><em>Como uma Cláusula Custou $72.000 a uma Startup</em>',sub:"As cláusulas de renovação automática estão enterradas em 69% dos contratos de software. A maioria descobre tarde demais.",mdate:"Junho 2025",mread:"8 min de leitura",s1:"dos contratos de software renovam automaticamente",s2:"renovados acidentalmente por uma startup em crescimento",s3:"estados dos EUA regulamentam as renovações automáticas",h2a:"Tudo Começou com um DocuSign",p1:"Uma startup recebeu um link DocuSign de um fornecedor. O contrato parecia padrão — um ano, preço razoável, cláusula de renovação enterrada na secção 9.",p2:"Doze meses depois a data passou durante um lançamento. A subscrição de $72.000 renovou automaticamente. O fornecedor recusou. Pagaram um ano que não precisavam.",p3:"As renovações perdidas podem custar até $4,5 milhões anuais a uma empresa de $50M.",cl1:"⚠ Caso Real",ct1:"Uma equipa jurídica perdeu a janela de cancelamento de 60 dias. Pagaram mais um ano com 20% de aumento.",h2b:"O que a cláusula diz realmente",p4:"Aqui está uma cláusula favorável ao fornecedor:",clause:"\"O presente Acordo renovar-se-á automaticamente salvo aviso escrito de não renovação com pelo menos trinta (30) dias de antecedência. O Fornecedor pode ajustar as Taxas de Subscrição a cada renovação.\"",p5:"Este parágrafo bloqueia-o por mais um ano por defeito, dá-lhe apenas 30 dias para sair e permite ao fornecedor aumentar os preços unilateralmente.",wl:"💡 O que verificar",wt:"O perigo é a combinação de janela curta (30 dias em vez de 90), sem limite de preço e linguagem que transforma o seu silêncio em consentimento.",h2c:"As três variantes que apanham as empresas",h3a:"1. A janela curta",p6:"30 dias parece razoável até perceber que a maioria das equipas não acompanha datas de contratos com essa precisão.",h3b:"2. O escalador de preços",p7:"Muitas cláusulas permitem ao fornecedor ajustar os preços na renovação — aumentos de 10-30% sem negociação.",h3c:"3. O reinício silencioso",p8:"Alguns contratos renovam pelo prazo original completo. Perder a janela custa um ano inteiro.",h2d:"Como proteger a sua empresa",p9:"Antes de assinar qualquer contrato, verifique estas cinco coisas:",chk:["Prazo de aviso abaixo de 60 dias? Favorece o fornecedor — negoceie 90","Preço muda na renovação? Exija um limite para pelo menos um ciclo","Renovação pelo prazo original completo? Evite","Cláusula de rescisão por conveniência? Garanta que exista","Quem acompanha esta data internamente? Designar alguém"],cl2:"✓ Melhor cláusula",ct2:"\"O presente Acordo renova por prazos anuais sucessivos salvo aviso escrito com pelo menos 90 dias. As taxas não excederão as do prazo anterior em mais de 5%.\"",h2e:"O custo real não é a fatura",p10:"Quando um contrato renova inesperadamente, a fatura é o custo mais visível. Mas há ocultos: tempo de negociação, orçamento preso em ferramentas não utilizadas.",p11:"As empresas mais afetadas são as que avançam mais depressa — onde ninguém gere contratos de fornecedores.",ctah:"O seu próximo contrato tem uma armadilha de renovação?",ctap:"O Conditio analisa os seus contratos para cláusulas de renovação automática e sinaliza-as antes de assinar.",ctabtn:"Analisar um contrato gratuitamente →",ncta:"Analise os seus contratos gratuitamente"}
+};
+['en-gb','en-us'].forEach(k=>T[k]={...T.en});
+T['pt-br']={...T.pt,mread:"8 min de leitura",ncta:"Analise seus contratos grátis",ctabtn:"Analisar um contrato grátis →"};
+T['es-latam']={...T.es,ncta:"Analizá tus contratos gratis",ctabtn:"Analizá un contrato gratis →"};
+const tags={nl:"Contractrisico",nb:"Kontraktrisiko",da:"Kontraktrisiko",pl:"Ryzyko Umowne",cs:"Smluvní Riziko",hu:"Szerződéses Kockázat",hr:"Ugovorni Rizik",sl:"Pogodbeno Tveganje",bg:"Договорен Риск",ca:"Risc Contractual",id:"Risiko Kontrak",zh:"合同风险",ja:"契約リスク",ko:"계약 위험",ar:"مخاطر العقود"};
+['nl','nb','da','pl','cs','hu','hr','sl','bg','ca','id','zh','ja','ko','ar'].forEach(k=>{if(!T[k])T[k]={...T.en,eyebrow:tags[k]||"Contract Risk"}});
+function L(lang){
+  const t=T[lang]||T.en;
+  document.documentElement.dir=lang==='ar'?'rtl':'ltr';
+  document.documentElement.lang=lang;
+  const si=(id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v};
+  const st=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+  si('h1',t.h1);
+  ['eyebrow','sub','mdate','mread','s1','s2','s3','h2a','p1','p2','p3','cl1','ct1','h2b','p4','clause','p5','wl','wt','h2c','h3a','p6','h3b','p7','h3c','p8','h2d','p9','cl2','ct2','h2e','p10','p11','ctah','ctap','ctabtn','ncta'].forEach(id=>st(id,t[id]||''));
+  const chk=document.getElementById('chk');if(chk&&t.chk)chk.innerHTML=t.chk.map(i=>`<li>${i}</li>`).join('');
+  document.querySelectorAll('.lb').forEach(b=>b.classList.toggle('on',b.getAttribute('onclick')===`L('${lang}')`));
+}
+</script>
+</body></html>

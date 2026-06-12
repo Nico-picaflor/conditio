@@ -390,6 +390,36 @@
     .success-msg { display: none; font-size: 15px; color: #34c759; margin-top: 1rem; font-weight: 400; }
     .capture-note { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 18px; }
 
+    /* BLOG */
+    .blog-section { max-width: 980px; margin: 0 auto; padding: 80px 40px 72px; }
+    .blog-section .section-eyebrow { font-size: 13px; font-weight: 500; color: #0071e3; display: block; margin-bottom: 10px; }
+    .blog-section h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
+    .blog-section .section-sub { font-size: 19px; font-weight: 300; color: #6e6e73; margin-bottom: 48px; max-width: 560px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .blog-grid .blog-card:first-child { grid-column: span 2; }
+    .blog-card {
+      display: flex; flex-direction: column;
+      border: 0.5px solid #d2d2d7; border-radius: 18px;
+      padding: 28px; text-decoration: none; color: inherit;
+      background: #fff; transition: box-shadow 0.18s, transform 0.18s;
+    }
+    .blog-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-2px); }
+    .blog-card-tag {
+      display: inline-block; background: rgba(0,113,227,0.08);
+      color: #0071e3; font-size: 12px; font-weight: 500;
+      padding: 4px 11px; border-radius: 980px; margin-bottom: 14px; align-self: flex-start;
+    }
+    .blog-card h3 { font-size: 17px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; color: #1d1d1f; margin-bottom: 10px; }
+    .blog-grid .blog-card:first-child h3 { font-size: 21px; }
+    .blog-card p { font-size: 14px; color: #6e6e73; line-height: 1.5; font-weight: 300; flex: 1; margin-bottom: 18px; }
+    .blog-card-meta { font-size: 12.5px; color: #a1a1a8; font-weight: 400; display: flex; align-items: center; gap: 8px; }
+    .blog-card-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: #c7c7cc; display: inline-block; }
+    @media (max-width: 760px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-grid .blog-card:first-child { grid-column: span 1; }
+      .blog-section { padding-left: 20px; padding-right: 20px; }
+    }
+
     /* FOOTER */
     footer {
       padding: 26px 40px; text-align: center;
@@ -770,6 +800,45 @@
       <summary>Do you support languages other than English?<span class="faq-icon">+</span></summary>
       <p>You can upload contracts in any language and receive the report in your preferred language. The app supports 25 languages — set yours in account settings.</p>
     </details>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section" id="blog">
+  <span class="section-eyebrow" id="t-blog-eyebrow">From the blog</span>
+  <h2 id="t-blog-h2">Learn before you sign.</h2>
+  <p class="section-sub" id="t-blog-sub">Practical guides on contract risk, dangerous clauses, and what most businesses miss.</p>
+  <div class="blog-grid">
+    <a class="blog-card" href="blog/article-1-auto-renewal.html">
+      <span class="blog-card-tag">Contract Risk</span>
+      <h3>The Auto-Renewal Trap: How a Single Clause Cost a Startup $72,000</h3>
+      <p>Auto-renewal clauses are buried in 69% of software contracts. Most companies only discover them when it's too late.</p>
+      <div class="blog-card-meta">June 2025<span class="dot"></span>8 min read</div>
+    </a>
+    <a class="blog-card" href="blog/article-2-unlimited-liability.html">
+      <span class="blog-card-tag">Contract Risk</span>
+      <h3>Unlimited Liability: The Clause That Can Bankrupt Your Business</h3>
+      <p>Accepting unlimited liability means there's no cap on what you could owe. Here's what to look for.</p>
+      <div class="blog-card-meta">June 2025<span class="dot"></span>7 min read</div>
+    </a>
+    <a class="blog-card" href="blog/article-3-7-dangerous-clauses.html">
+      <span class="blog-card-tag">SaaS Contracts</span>
+      <h3>The 7 Most Dangerous Clauses in SaaS Contracts</h3>
+      <p>Seven clauses that regularly surprise, lock in, or financially expose businesses that sign without a careful review.</p>
+      <div class="blog-card-meta">June 2025<span class="dot"></span>10 min read</div>
+    </a>
+    <a class="blog-card" href="blog/article-4-how-to-review-contracts.html">
+      <span class="blog-card-tag">Practical Guide</span>
+      <h3>How to Review a Contract Without Being a Lawyer</h3>
+      <p>A practical 5-step process for reviewing vendor contracts as a founder, ops lead, or procurement manager.</p>
+      <div class="blog-card-meta">June 2025<span class="dot"></span>9 min read</div>
+    </a>
+    <a class="blog-card" href="blog/article-5-smb-contract-mistakes.html">
+      <span class="blog-card-tag">SMB Data</span>
+      <h3>The Most Common Contract Mistake in SMBs — 2025 Data</h3>
+      <p>Data from 2024–2025 on how small businesses lose money through contract errors — and the single most common mistake.</p>
+      <div class="blog-card-meta">June 2025<span class="dot"></span>8 min read</div>
+    </a>
   </div>
 </section>
 
