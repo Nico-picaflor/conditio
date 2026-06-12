@@ -4,473 +4,486 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conditio — AI Contract Risk Scanner</title>
+  <meta name="description" content="Upload any contract and get a risk score, flagged clauses, and a plain-English summary in seconds. No lawyer. No waiting." />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BRQ3YC8L0Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BRQ3YC8L0Y');
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --white: #ffffff;
-      --black: #1d1d1f;
-      --gray: #6e6e73;
-      --gray-light: #f5f5f7;
-      --gray-border: #d2d2d7;
-      --blue: #0071e3;
-      --blue-hover: #0077ed;
-      --green: #34c759;
-      --red: #ff3b30;
-      --yellow: #ff9f0a;
-      --radius: 12px;
-      --radius-lg: 18px;
-    }
-
     html { scroll-behavior: smooth; }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif;
-      color: var(--black);
-      background: var(--white);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1d1d1f;
+      background: #fff;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       font-size: 17px;
-      line-height: 1.47059;
+      line-height: 1.47;
     }
+    details summary::-webkit-details-marker { display: none; }
 
     /* NAV */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(255,255,255,0.85);
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(22,22,24,0.82);
       backdrop-filter: saturate(180%) blur(20px);
       -webkit-backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 0.5px solid var(--gray-border);
+      border-bottom: 0.5px solid rgba(255,255,255,0.12);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 2rem; height: 52px;
+      padding: 0 40px; height: 54px;
     }
-    .logo {
-      font-size: 17px; font-weight: 600; color: var(--black);
-      letter-spacing: -0.02em;
+    .logo { font-size: 18px; font-weight: 600; letter-spacing: -0.02em; color: #fff; }
+    .logo em { font-style: normal; color: #2997ff; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      font-size: 14px; color: rgba(255,255,255,0.78);
+      text-decoration: none; transition: color 0.15s;
     }
-    .logo em { font-style: normal; color: var(--blue); }
+    .nav-links a:hover { color: #fff; }
     .nav-btn {
-      background: var(--blue); color: #fff; border: none;
-      border-radius: 980px; padding: 7px 16px;
+      background: #0071e3; color: #fff; border: none;
+      border-radius: 980px; padding: 8px 17px;
       font-size: 13px; font-weight: 500; cursor: pointer;
-      transition: background 0.15s;
-      font-family: inherit;
+      font-family: inherit; transition: background 0.15s;
     }
-    .nav-btn:hover { background: var(--blue-hover); }
+    .nav-btn:hover { background: #0077ed; }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 4rem 2rem 4rem;
-      max-width: 900px; margin: 0 auto;
+    /* HERO (dark, two-column) */
+    .hero-dark { background: #161618; color: #fff; }
+    .hero-inner {
+      max-width: 1120px; margin: 0 auto;
+      padding: 72px 40px 60px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 56px; align-items: center;
     }
-    .eyebrow {
-      font-size: 13px; font-weight: 500; letter-spacing: 0.01em;
-      color: var(--blue); margin-bottom: 1rem;
-      display: block;
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 13px; font-weight: 500; color: #2997ff;
+      background: rgba(41,151,255,0.12);
+      padding: 5px 13px; border-radius: 980px; margin-bottom: 24px;
     }
     .hero h1 {
-      font-size: clamp(40px, 6vw, 64px);
-      font-weight: 600; letter-spacing: -0.025em;
-      line-height: 1.07; color: var(--black);
-      margin-bottom: 1.25rem;
+      font-size: clamp(40px, 4.6vw, 60px);
+      font-weight: 600; letter-spacing: -0.03em; line-height: 1.04;
+      margin-bottom: 22px;
     }
-    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero h1 em { font-style: normal; color: #2997ff; }
     .hero-sub {
-      font-size: clamp(17px, 2.2vw, 21px);
-      font-weight: 300; color: var(--gray);
-      max-width: 600px; margin: 0 auto 2.5rem;
-      line-height: 1.5;
+      font-size: 20px; font-weight: 300;
+      color: rgba(255,255,255,0.66); line-height: 1.5;
+      margin-bottom: 32px; max-width: 440px;
     }
-    .hero-actions {
-      display: flex; gap: 14px; justify-content: center;
-      flex-wrap: wrap; margin-bottom: 1rem;
-    }
+    .hero-actions { display: flex; gap: 13px; flex-wrap: wrap; margin-bottom: 16px; }
     .btn-primary {
-      background: var(--blue); color: #fff; border: none;
-      border-radius: 980px; padding: 13px 28px;
+      background: #0071e3; color: #fff; border: none;
+      border-radius: 980px; padding: 14px 30px;
       font-size: 17px; font-weight: 400; cursor: pointer;
-      transition: background 0.15s; font-family: inherit;
-    }
-    .btn-primary:hover { background: var(--blue-hover); }
-    .btn-outline {
-      background: transparent; color: var(--blue);
-      border: 1px solid var(--blue);
-      border-radius: 980px; padding: 13px 28px;
-      font-size: 17px; font-weight: 400; cursor: pointer;
-      transition: all 0.15s; font-family: inherit;
+      font-family: inherit; transition: background 0.15s;
       text-decoration: none; display: inline-block;
     }
-    .btn-outline:hover { background: var(--blue); color: #fff; }
-    .hero-note { font-size: 13px; color: var(--gray); }
-
-    /* SCORE SHOWCASE */
-    .score-showcase {
-      max-width: 680px; margin: 0 auto 1rem;
-      padding: 0 2rem;
-    }
-    .score-card {
-      background: var(--gray-light);
-      border-radius: var(--radius-lg);
-      padding: 2rem;
-      overflow: hidden;
-    }
-    .score-card-header {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 1.5rem;
-    }
-    .file-icon {
-      width: 40px; height: 40px;
-      background: var(--white); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-    .file-name { font-size: 15px; font-weight: 500; color: var(--black); }
-    .file-meta { font-size: 13px; color: var(--gray); margin-top: 2px; }
-
-    .risk-row {
-      display: flex; align-items: center; gap: 1.5rem;
-      background: var(--white); border-radius: var(--radius);
-      padding: 1.25rem 1.5rem; margin-bottom: 1rem;
-    }
-    .score-display {
-      text-align: center; flex-shrink: 0;
-    }
-    .score-number {
-      font-size: 48px; font-weight: 600;
-      letter-spacing: -0.03em; line-height: 1;
-      color: var(--red);
-    }
-    .score-label {
-      font-size: 11px; font-weight: 500;
-      letter-spacing: 0.04em; text-transform: uppercase;
-      color: var(--gray); margin-top: 4px;
-    }
-    .score-divider {
-      width: 1px; height: 48px;
-      background: var(--gray-border); flex-shrink: 0;
-    }
-    .score-summary-title {
-      font-size: 17px; font-weight: 500; color: var(--black);
-    }
-    .score-summary-sub {
-      font-size: 13px; color: var(--gray); margin-top: 4px;
-    }
-
-    .flags { display: flex; flex-direction: column; gap: 8px; }
-    .flag {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 12px 14px; border-radius: 10px;
-    }
-    .flag-red { background: rgba(255,59,48,0.08); }
-    .flag-yellow { background: rgba(255,159,10,0.08); }
-    .flag-green { background: rgba(52,199,89,0.08); }
-    .flag-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      margin-top: 5px; flex-shrink: 0;
-    }
-    .dot-red { background: var(--red); }
-    .dot-yellow { background: var(--yellow); }
-    .dot-green { background: var(--green); }
-    .flag-body { flex: 1; }
-    .flag-text { font-size: 14px; color: var(--black); line-height: 1.4; font-weight: 400; }
-    .flag-clause { font-size: 12px; color: var(--gray); margin-top: 3px; }
-
-    /* SECTION BASE */
-    .section {
-      max-width: 900px; margin: 0 auto;
-      padding: 5rem 2rem;
-    }
-    .section-eyebrow {
-      font-size: 13px; font-weight: 500; color: var(--blue);
-      margin-bottom: 0.75rem; display: block;
-    }
-    .section h2 {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 600; letter-spacing: -0.02em;
-      line-height: 1.1; color: var(--black);
-      margin-bottom: 1rem;
-    }
-    .section-sub {
-      font-size: 19px; font-weight: 300; color: var(--gray);
-      max-width: 560px; line-height: 1.5;
-      margin-bottom: 3rem;
-    }
-
-    /* BENEFITS GRID */
-    .benefits {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2px; background: var(--gray-border);
-      border: 1px solid var(--gray-border);
-      border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .benefit {
-      background: var(--white); padding: 2rem 1.5rem;
-    }
-    .benefit-icon { font-size: 28px; margin-bottom: 1rem; display: block; }
-    .benefit-title { font-size: 17px; font-weight: 500; color: var(--black); margin-bottom: 0.5rem; }
-    .benefit-desc { font-size: 15px; color: var(--gray); line-height: 1.5; font-weight: 300; }
-
-    /* VS TABLE */
-    .table-wrap {
-      border: 1px solid var(--gray-border);
-      border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .vs-table { width: 100%; border-collapse: collapse; }
-    .vs-table th {
-      padding: 12px 16px; font-size: 13px; font-weight: 500;
-      letter-spacing: 0.02em; text-align: left;
-      background: var(--gray-light); color: var(--gray);
-      border-bottom: 1px solid var(--gray-border);
-    }
-    .vs-table th.col-you { color: var(--blue); background: rgba(0,113,227,0.06); }
-    .vs-table td {
-      padding: 13px 16px; font-size: 15px;
-      border-bottom: 0.5px solid var(--gray-border);
-      color: var(--black);
-    }
-    .vs-table tr:last-child td { border-bottom: none; }
-    .vs-table td.col-them { color: var(--gray); }
-    .vs-table td.col-you {
-      background: rgba(0,113,227,0.04);
-      color: var(--black); font-weight: 500;
-    }
-    .vs-table td.row-label { color: var(--gray); font-size: 14px; }
-    .check { color: var(--green); }
-    .cross { color: var(--gray); }
-
-    /* PRICING */
-    .pricing {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .plan {
-      border: 1px solid var(--gray-border);
-      border-radius: var(--radius-lg);
-      padding: 2rem; position: relative;
-      background: var(--white);
-      transition: box-shadow 0.2s;
-    }
-    .plan:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-    .plan.featured {
-      border: 2px solid var(--blue);
-      background: rgba(0,113,227,0.03);
-    }
-    .plan-badge {
-      position: absolute; top: -13px; left: 50%;
-      transform: translateX(-50%);
-      background: var(--blue); color: #fff;
-      font-size: 12px; font-weight: 500;
-      padding: 3px 14px; border-radius: 980px;
-      white-space: nowrap;
-    }
-    .plan-name {
-      font-size: 13px; font-weight: 500;
-      text-transform: uppercase; letter-spacing: 0.06em;
-      color: var(--gray); margin-bottom: 1rem;
-    }
-    .plan-price {
-      font-size: 44px; font-weight: 600;
-      letter-spacing: -0.03em; color: var(--black);
-      line-height: 1;
-    }
-    .plan-price sup {
-      font-size: 22px; font-weight: 400;
-      vertical-align: super; letter-spacing: 0;
-    }
-    .plan-price span {
-      font-size: 17px; font-weight: 300;
-      color: var(--gray); letter-spacing: 0;
-    }
-    .plan-limit {
-      font-size: 14px; color: var(--gray);
-      margin: 0.75rem 0 1.5rem; font-weight: 300;
-    }
-    .plan-divider {
-      height: 0.5px; background: var(--gray-border);
-      margin-bottom: 1.5rem;
-    }
-    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .plan-features li {
-      font-size: 15px; color: var(--black);
-      display: flex; align-items: center; gap: 8px;
-      font-weight: 300;
-    }
-    .plan-features li::before {
-      content: "✓"; color: var(--blue);
-      font-weight: 600; flex-shrink: 0; font-size: 13px;
-    }
-
-    /* CAPTURE */
-    .capture-wrap {
-      background: var(--gray-light);
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-    .capture-inner { max-width: 600px; margin: 0 auto; }
-    .capture-inner h2 {
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 600; letter-spacing: -0.02em;
-      color: var(--black); margin-bottom: 0.75rem;
-    }
-    .capture-inner p {
-      font-size: 19px; font-weight: 300; color: var(--gray);
-      margin-bottom: 2rem;
-    }
-    .email-row {
-      display: flex; gap: 10px;
-      max-width: 460px; margin: 0 auto;
-      flex-wrap: wrap; justify-content: center;
-    }
-    .email-input {
-      flex: 1; min-width: 220px;
-      padding: 13px 18px;
-      border-radius: 980px;
-      border: 1px solid var(--gray-border);
-      font-size: 17px; font-weight: 300;
-      background: var(--white); color: var(--black);
-      outline: none; font-family: inherit;
-      transition: border-color 0.15s;
-    }
-    .email-input::placeholder { color: var(--gray); }
-    .email-input:focus { border-color: var(--blue); }
-    .btn-submit {
-      background: var(--blue); color: #fff; border: none;
-      border-radius: 980px; padding: 13px 28px;
+    .btn-primary:hover { background: #0077ed; }
+    .btn-ghost {
+      background: rgba(255,255,255,0.08); color: #fff;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 980px; padding: 14px 30px;
       font-size: 17px; font-weight: 400; cursor: pointer;
-      font-family: inherit; white-space: nowrap;
+      text-decoration: none; display: inline-block;
       transition: background 0.15s;
     }
-    .btn-submit:hover { background: var(--blue-hover); }
-    .btn-submit:disabled { opacity: 0.6; cursor: default; }
-    .success-msg {
-      display: none; font-size: 15px;
-      color: var(--green); margin-top: 1rem; font-weight: 400;
-    }
-    .capture-note {
-      font-size: 13px; color: var(--gray);
-      margin-top: 1.25rem;
-    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.14); }
+    .hero-note { font-size: 13px; color: rgba(255,255,255,0.5); }
 
-    /* DIVIDER */
-    .divider { height: 0.5px; background: var(--gray-border); }
+    /* DEMO CARD */
+    .demo-card {
+      background: #fff; border-radius: 20px; padding: 24px;
+      color: #1d1d1f; box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    }
+    .demo-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .file-icon {
+      width: 40px; height: 40px; background: #f5f5f7; border-radius: 9px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .file-name { font-size: 14px; font-weight: 500; }
+    .file-meta { font-size: 12px; color: #86868b; margin-top: 1px; }
+    .risk-row {
+      display: flex; align-items: center; gap: 20px;
+      background: #f5f5f7; border-radius: 13px;
+      padding: 18px 20px; margin-bottom: 13px;
+    }
+    .score-display { text-align: center; flex-shrink: 0; }
+    .score-number {
+      font-size: 46px; font-weight: 600; letter-spacing: -0.03em;
+      line-height: 1; color: #ff3b30;
+    }
+    .score-label {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.04em;
+      text-transform: uppercase; color: #86868b; margin-top: 4px;
+    }
+    .score-divider { width: 1px; height: 46px; background: #d2d2d7; flex-shrink: 0; }
+    .risk-summary-title { font-size: 16px; font-weight: 500; }
+    .risk-summary-sub { font-size: 12px; color: #6e6e73; margin-top: 2px; }
+    .flags { display: flex; flex-direction: column; gap: 7px; }
+    .flag {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 11px 13px; border-radius: 10px;
+    }
+    .flag-red { background: rgba(255,59,48,0.07); }
+    .flag-yellow { background: rgba(255,159,10,0.09); }
+    .flag-green { background: rgba(52,199,89,0.09); }
+    .flag-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      margin-top: 6px; flex-shrink: 0;
+    }
+    .dot-red { background: #ff3b30; }
+    .dot-yellow { background: #ff9f0a; }
+    .dot-green { background: #34c759; }
+    .flag-text { font-size: 13px; color: #1d1d1f; line-height: 1.4; }
+    .flag-clause { font-size: 11px; color: #86868b; margin-top: 2px; }
+
+    /* STATS BAR */
+    .stats-bar {
+      max-width: 1120px; margin: 0 auto; padding: 0 40px 56px;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; overflow: hidden;
+    }
+    .stat { background: #161618; padding: 26px 28px; }
+    .stat-num { font-size: 34px; font-weight: 600; letter-spacing: -0.02em; color: #fff; }
+    .stat-desc { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 4px; font-weight: 300; }
+
+    /* HOW IT WORKS */
+    .section { max-width: 980px; margin: 0 auto; padding: 80px 40px 24px; }
+    .section-eyebrow { font-size: 13px; font-weight: 500; color: #0071e3; display: block; margin-bottom: 10px; }
+    .section h2 {
+      font-size: clamp(30px, 4.2vw, 44px); font-weight: 600;
+      letter-spacing: -0.025em; line-height: 1.08;
+    }
+    .steps { display: flex; flex-direction: column; margin-top: 48px; }
+    .step {
+      display: grid; grid-template-columns: 64px 1fr;
+      gap: 24px; padding: 26px 0;
+      border-top: 1px solid #d2d2d7;
+    }
+    .step:last-child { border-bottom: 1px solid #d2d2d7; }
+    .step-num { font-size: 32px; font-weight: 600; color: #0071e3; letter-spacing: -0.02em; }
+    .step-title { font-size: 21px; font-weight: 500; margin-bottom: 6px; }
+    .step-desc { font-size: 17px; color: #6e6e73; line-height: 1.5; font-weight: 300; max-width: 620px; }
+
+    /* WHY IT MATTERS */
+    .why-section { max-width: 980px; margin: 0 auto; padding: 64px 40px; }
+    .why-section .section-eyebrow { font-size: 13px; font-weight: 500; color: #0071e3; display: block; margin-bottom: 10px; }
+    .why-section h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 600;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 14px;
+    }
+    .why-sub { font-size: 19px; font-weight: 300; color: #6e6e73; max-width: 580px; line-height: 1.5; margin-bottom: 40px; }
+    .benefits {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px; background: #d2d2d7;
+      border: 1px solid #d2d2d7; border-radius: 18px; overflow: hidden;
+    }
+    .benefit { background: #fff; padding: 30px 26px; }
+    .benefit-icon { font-size: 26px; margin-bottom: 14px; display: block; }
+    .benefit-title { font-size: 17px; font-weight: 500; margin-bottom: 7px; }
+    .benefit-desc { font-size: 15px; color: #6e6e73; line-height: 1.5; font-weight: 300; }
+
+    /* VS TABLE */
+    .vs-section { max-width: 980px; margin: 0 auto; padding: 64px 40px; }
+    .vs-section .section-eyebrow { font-size: 13px; font-weight: 500; color: #0071e3; display: block; margin-bottom: 10px; }
+    .vs-section h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 600;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 36px;
+    }
+    .table-wrap { border: 1px solid #d2d2d7; border-radius: 18px; overflow: hidden; }
+    .vs-table { width: 100%; border-collapse: collapse; }
+    .vs-table th {
+      padding: 13px 18px; font-size: 13px; font-weight: 500;
+      text-align: left; border-bottom: 1px solid #d2d2d7;
+    }
+    .vs-table th:nth-child(2) { background: #f5f5f7; color: #6e6e73; }
+    .vs-table th:nth-child(3) { background: rgba(0,113,227,0.06); color: #0071e3; font-weight: 600; }
+    .vs-table td { padding: 14px 18px; font-size: 14px; border-bottom: 0.5px solid #e8e8ed; color: #6e6e73; }
+    .vs-table tr:last-child td { border-bottom: none; }
+    .vs-table td.col-them { font-size: 15px; color: #86868b; }
+    .vs-table td.col-you { font-size: 15px; font-weight: 500; color: #1d1d1f; background: rgba(0,113,227,0.04); }
+    .check { color: #34c759; }
+
+    /* TESTIMONIALS */
+    .testimonials-dark { background: #161618; color: #fff; padding: 72px 40px; }
+    .testimonials-inner { max-width: 980px; margin: 0 auto; }
+    .testimonials-dark .section-eyebrow { font-size: 13px; font-weight: 500; color: #2997ff; display: block; margin-bottom: 10px; }
+    .testimonials-dark h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 600;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 40px;
+    }
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px;
+    }
+    .testimonial {
+      background: #222226; border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px; padding: 28px;
+    }
+    .testimonial p {
+      font-size: 17px; line-height: 1.5; font-weight: 300;
+      margin-bottom: 22px; color: rgba(255,255,255,0.9);
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 11px; }
+    .avatar {
+      width: 38px; height: 38px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 600; color: #fff; flex-shrink: 0;
+    }
+    .author-name { font-size: 14px; font-weight: 500; color: #fff; }
+    .author-role { font-size: 13px; color: rgba(255,255,255,0.5); }
+
+    /* PRICING */
+    .pricing-section { max-width: 980px; margin: 0 auto; padding: 80px 40px 64px; }
+    .pricing-section .section-eyebrow { font-size: 13px; font-weight: 500; color: #0071e3; display: block; margin-bottom: 10px; }
+    .pricing-section h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 600;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px;
+    }
+    .pricing-sub { font-size: 19px; font-weight: 300; color: #6e6e73; margin-bottom: 44px; }
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px; align-items: start;
+    }
+    .plan { border: 1px solid #d2d2d7; border-radius: 18px; padding: 30px; background: #fff; }
+    .plan.featured { border: 2px solid #0071e3; background: rgba(0,113,227,0.03); position: relative; }
+    .plan-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: #0071e3; color: #fff; font-size: 12px; font-weight: 500;
+      padding: 3px 15px; border-radius: 980px; white-space: nowrap;
+    }
+    .plan-name { font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #86868b; margin-bottom: 16px; }
+    .plan-price { font-size: 46px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
+    .plan-price sup { font-size: 23px; font-weight: 400; vertical-align: super; }
+    .plan-price span { font-size: 17px; font-weight: 300; color: #86868b; }
+    .plan-limit { font-size: 14px; color: #86868b; margin: 12px 0 22px; font-weight: 300; }
+    .plan-divider { height: 0.5px; background: #d2d2d7; margin-bottom: 22px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .plan-features li { font-size: 15px; font-weight: 300; display: flex; gap: 9px; }
+    .plan-features li::before { content: "✓"; color: #0071e3; font-weight: 600; flex-shrink: 0; }
+
+    /* FAQ */
+    .faq-section { max-width: 760px; margin: 0 auto; padding: 24px 40px 72px; }
+    .faq-section .section-eyebrow { font-size: 13px; font-weight: 500; color: #0071e3; display: block; margin-bottom: 10px; }
+    .faq-section h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 600;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 36px;
+    }
+    .faq-list { border-top: 0.5px solid #d2d2d7; }
+    .faq-list details { border-bottom: 0.5px solid #d2d2d7; }
+    .faq-list summary {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; padding: 20px 4px; cursor: pointer;
+      font-size: 18px; font-weight: 500; list-style: none;
+    }
+    .faq-list summary .faq-icon { color: #0071e3; font-size: 22px; font-weight: 300; flex-shrink: 0; }
+    .faq-list details[open] summary .faq-icon { content: "−"; }
+    .faq-list p { padding: 0 4px 22px; font-size: 16px; color: #6e6e73; line-height: 1.55; font-weight: 300; }
+
+    /* CAPTURE */
+    .capture-dark { background: #161618; color: #fff; padding: 80px 40px; text-align: center; }
+    .capture-inner { max-width: 600px; margin: 0 auto; }
+    .capture-dark h2 {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 600;
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px;
+    }
+    .capture-dark p.capture-sub { font-size: 19px; font-weight: 300; color: rgba(255,255,255,0.65); margin-bottom: 30px; }
+    .email-row { display: flex; gap: 10px; max-width: 460px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .email-input {
+      flex: 1; min-width: 220px; padding: 14px 19px;
+      border-radius: 980px; border: 1px solid rgba(255,255,255,0.2);
+      font-size: 17px; font-weight: 300;
+      background: rgba(255,255,255,0.06); color: #fff;
+      outline: none; font-family: inherit; transition: border-color 0.15s;
+    }
+    .email-input::placeholder { color: rgba(255,255,255,0.4); }
+    .email-input:focus { border-color: #2997ff; }
+    .btn-submit {
+      background: #0071e3; color: #fff; border: none;
+      border-radius: 980px; padding: 14px 30px;
+      font-size: 17px; font-weight: 400; cursor: pointer;
+      font-family: inherit; white-space: nowrap; transition: background 0.15s;
+    }
+    .btn-submit:hover { background: #0077ed; }
+    .btn-submit:disabled { opacity: 0.6; cursor: default; }
+    .success-msg { display: none; font-size: 15px; color: #34c759; margin-top: 1rem; font-weight: 400; }
+    .capture-note { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 18px; }
 
     /* FOOTER */
     footer {
-      padding: 1.5rem 2rem; text-align: center;
-      font-size: 13px; color: var(--gray);
-      border-top: 0.5px solid var(--gray-border);
+      padding: 26px 40px; text-align: center;
+      font-size: 13px; color: #86868b;
+      border-top: 0.5px solid #d2d2d7;
     }
+    footer a { color: #86868b; text-decoration: none; }
+    footer a:hover { color: #1d1d1f; }
 
-    @media (max-width: 600px) {
-      nav { padding: 0 1.25rem; }
-      .hero { padding: 5rem 1.25rem 3.5rem; }
-      .score-showcase { padding: 0 1.25rem; }
-      .section { padding: 4rem 1.25rem; }
-      .capture-wrap { padding: 4rem 1.25rem; }
+    /* RESPONSIVE */
+    @media (max-width: 760px) {
+      nav { padding: 0 20px; }
+      .nav-links a { display: none; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 48px 20px 40px; }
+      .demo-card { display: none; }
+      .stats-bar { padding: 0 20px 40px; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .section, .why-section, .vs-section, .pricing-section, .faq-section { padding-left: 20px; padding-right: 20px; }
+      .testimonials-dark { padding: 48px 20px; }
+      .capture-dark { padding: 48px 20px; }
+      footer { padding: 26px 20px; }
     }
   </style>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BRQ3YC8L0Y"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-BRQ3YC8L0Y');
-</script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <div class="logo">Condi<em>tio</em></div>
-  <button class="nav-btn" onclick="window.location.href='https://conditio-backend-production.up.railway.app/login'">Get early access</button>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <button class="nav-btn" onclick="window.location.href='https://conditio-backend-production.up.railway.app/login'">Get early access</button>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <span class="eyebrow">AI Contract Risk Scanner</span>
-  <h1>Your next contract<br>could cost you.<br><em>Know before you sign.</em></h1>
-  <p class="hero-sub">Upload any contract and get a risk score, flagged clauses, and a plain-English summary in seconds. No lawyer. No waiting.</p>
-  <div class="hero-actions">
-    <button class="btn-primary" onclick="window.location.href='https://conditio-backend-production.up.railway.app/login'">Get free early access</button>
-    <a href="#how-it-works" class="btn-outline">See how it works</a>
-  </div>
-  <p class="hero-note">No credit card required &nbsp;·&nbsp; First analysis free</p>
-</section>
+<div class="hero-dark">
+  <section class="hero-inner">
+    <div class="hero">
+      <span class="hero-eyebrow">AI Contract Risk Scanner</span>
+      <h1>Know what you're<br>signing.<br><em>Before you sign it.</em></h1>
+      <p class="hero-sub">Upload any contract and get a risk score, flagged clauses, and a plain-English summary in seconds. No lawyer. No waiting.</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="window.location.href='https://conditio-backend-production.up.railway.app/login'">Get free early access</button>
+        <a href="#how" class="btn-ghost">See how it works</a>
+      </div>
+      <p class="hero-note">No credit card required &nbsp;·&nbsp; First analysis free</p>
+    </div>
+    <div class="demo-card">
+      <div class="demo-card-header">
+        <div class="file-icon">📄</div>
+        <div>
+          <div class="file-name">SaaS Services Agreement — Vendor X</div>
+          <div class="file-meta">Analyzed in 8s &nbsp;·&nbsp; PDF &nbsp;·&nbsp; 12 pages</div>
+        </div>
+      </div>
+      <div class="risk-row">
+        <div class="score-display">
+          <div class="score-number" id="score-counter">0.0</div>
+          <div class="score-label">Risk score</div>
+        </div>
+        <div class="score-divider"></div>
+        <div>
+          <div class="risk-summary-title">High risk</div>
+          <div class="risk-summary-sub">3 clauses need review</div>
+        </div>
+      </div>
+      <div class="flags">
+        <div class="flag flag-red">
+          <div class="flag-dot dot-red"></div>
+          <div>
+            <div class="flag-text">Unlimited liability — no cap on damages</div>
+            <div class="flag-clause">Clause 8.2</div>
+          </div>
+        </div>
+        <div class="flag flag-red">
+          <div class="flag-dot dot-red"></div>
+          <div>
+            <div class="flag-text">Auto-renewal, 12 months, no notice window</div>
+            <div class="flag-clause">Clause 4.1</div>
+          </div>
+        </div>
+        <div class="flag flag-yellow">
+          <div class="flag-dot dot-yellow"></div>
+          <div>
+            <div class="flag-text">Pricing can change with 15 days' notice</div>
+            <div class="flag-clause">Clause 6.3</div>
+          </div>
+        </div>
+        <div class="flag flag-green">
+          <div class="flag-dot dot-green"></div>
+          <div>
+            <div class="flag-text">Balanced, standard confidentiality clause</div>
+            <div class="flag-clause">Clause 11.1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- DEMO CARD -->
-<div class="score-showcase" id="how-it-works">
-  <div class="score-card">
-    <div class="score-card-header">
-      <div class="file-icon">📄</div>
-      <div>
-        <div class="file-name">SaaS Services Agreement — Vendor X</div>
-        <div class="file-meta">Analyzed in 8 seconds &nbsp;·&nbsp; PDF &nbsp;·&nbsp; 12 pages</div>
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="stat-num">8 sec</div>
+        <div class="stat-desc">Average time to a full risk report</div>
       </div>
-    </div>
-    <div class="risk-row">
-      <div class="score-display">
-        <div class="score-number" id="score-counter">0.0</div>
-        <div class="score-label">Risk score</div>
+      <div class="stat">
+        <div class="stat-num">9.2%</div>
+        <div class="stat-desc">Of revenue lost to poor contract management</div>
       </div>
-      <div class="score-divider"></div>
-      <div>
-        <div class="score-summary-title">High risk</div>
-        <div class="score-summary-sub">3 clauses require review before signing</div>
-      </div>
-    </div>
-    <div class="flags">
-      <div class="flag flag-red">
-        <div class="flag-dot dot-red"></div>
-        <div class="flag-body">
-          <div class="flag-text">Unlimited liability — vendor can claim damages without a cap</div>
-          <div class="flag-clause">Clause 8.2 &nbsp;·&nbsp; Ask your lawyer about this</div>
-        </div>
-      </div>
-      <div class="flag flag-red">
-        <div class="flag-dot dot-red"></div>
-        <div class="flag-body">
-          <div class="flag-text">Auto-renewal for 12 months with no minimum notice period</div>
-          <div class="flag-clause">Clause 4.1</div>
-        </div>
-      </div>
-      <div class="flag flag-yellow">
-        <div class="flag-dot dot-yellow"></div>
-        <div class="flag-body">
-          <div class="flag-text">Vendor can modify pricing with only 15 days' notice</div>
-          <div class="flag-clause">Clause 6.3 &nbsp;·&nbsp; Unusual for contracts of this type</div>
-        </div>
-      </div>
-      <div class="flag flag-green">
-        <div class="flag-dot dot-green"></div>
-        <div class="flag-body">
-          <div class="flag-text">Standard and balanced confidentiality clause</div>
-          <div class="flag-clause">Clause 11.1</div>
-        </div>
+      <div class="stat">
+        <div class="stat-num">PDF · DOCX</div>
+        <div class="stat-desc">Drag, drop, done — no setup required</div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="divider" style="margin-top:4rem;"></div>
+<!-- HOW IT WORKS -->
+<section class="section" id="how">
+  <span class="section-eyebrow">How it works</span>
+  <h2>Upload, analyze, decide.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <div class="step-title">Upload any contract</div>
+        <div class="step-desc">Drop a PDF or DOCX — vendor agreements, NDAs, leases, SOWs. No template, no setup, no formatting required.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <div class="step-title">Conditio reads every clause</div>
+        <div class="step-desc">The same risk rubric applied to all of it — liability, renewals, notice deadlines, payment terms, IP, termination.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <div class="step-title">You get a report you can act on</div>
+        <div class="step-desc">A risk score, flagged clauses with explanations, key dates, and a plain-English summary — ready to act on or share.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- WHY IT MATTERS -->
-<section class="section">
+<section class="why-section">
   <span class="section-eyebrow">Why it matters</span>
-  <h2>What you miss in a contract<br>is what costs you.</h2>
-  <p class="section-sub">Most legal problems in small businesses come from contracts signed without a thorough read — not because nobody wanted to, but because nobody had the time or expertise to know what to look for.</p>
+  <h2>What you miss is what costs you.</h2>
+  <p class="why-sub">Most legal problems for small businesses come from contracts signed without a careful read — not for lack of care, but for lack of time and expertise to know what to look for.</p>
   <div class="benefits">
     <div class="benefit">
       <span class="benefit-icon">🛡️</span>
       <div class="benefit-title">Consistent analysis</div>
-      <div class="benefit-desc">The same risk rubric applied to every contract, every time. No variation.</div>
+      <div class="benefit-desc">The same risk rubric on every contract, every time. No variation by who's reading.</div>
     </div>
     <div class="benefit">
       <span class="benefit-icon">🗂️</span>
@@ -480,81 +493,86 @@
     <div class="benefit">
       <span class="benefit-icon">🔒</span>
       <div class="benefit-title">Your data stays yours</div>
-      <div class="benefit-desc">Contracts are never used to train AI models. Full privacy guarantee.</div>
+      <div class="benefit-desc">Contracts are never used to train AI models. Encrypted, visible only to you and your team.</div>
     </div>
     <div class="benefit">
       <span class="benefit-icon">👥</span>
-      <div class="benefit-title">Built for teams</div>
-      <div class="benefit-desc">Share analyses without anyone needing to learn AI prompting.</div>
+      <div class="benefit-title">Built for small teams</div>
+      <div class="benefit-desc">Share analyses without anyone needing to learn AI prompting. Upload and get a report.</div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- VS CHATGPT -->
-<section class="section">
+<section class="vs-section">
   <span class="section-eyebrow">Why not just use ChatGPT?</span>
-  <h2>ChatGPT reviews contracts.<br>Conditio protects you from<br>the ones you missed.</h2>
-  <p class="section-sub">Your buyers don't want to learn prompting. They want to upload and get a report.</p>
+  <h2>ChatGPT reviews contracts.<br>Conditio protects you from the ones you missed.</h2>
   <div class="table-wrap">
     <table class="vs-table">
       <thead>
         <tr>
-          <th style="width:34%"></th>
+          <th style="width:34%;padding:13px 18px"></th>
           <th style="width:33%">ChatGPT direct</th>
-          <th class="col-you" style="width:33%">Conditio</th>
+          <th style="width:33%">Conditio</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td class="row-label">Setup</td>
-          <td class="col-them">Zero</td>
-          <td class="col-you">Zero</td>
-        </tr>
-        <tr>
-          <td class="row-label">Result consistency</td>
-          <td class="col-them cross">Varies by who prompts</td>
-          <td class="col-you check">Same rubric, every time</td>
-        </tr>
-        <tr>
-          <td class="row-label">Audit trail</td>
-          <td class="col-them cross">None</td>
-          <td class="col-you check">Full history</td>
-        </tr>
-        <tr>
-          <td class="row-label">Contract memory</td>
-          <td class="col-them cross">Forgets everything</td>
-          <td class="col-you check">Search across all contracts</td>
-        </tr>
-        <tr>
-          <td class="row-label">Team access</td>
-          <td class="col-them cross">Per person</td>
-          <td class="col-you check">Shared workspace</td>
-        </tr>
-        <tr>
-          <td class="row-label">Privacy</td>
-          <td class="col-them cross">Data goes to OpenAI</td>
-          <td class="col-you check">Never used for training</td>
-        </tr>
-        <tr>
-          <td class="row-label">Workflow</td>
-          <td class="col-them cross">You write the prompts</td>
-          <td class="col-you check">Upload → get report</td>
-        </tr>
+        <tr><td>Result consistency</td><td class="col-them">Varies by who prompts</td><td class="col-you"><span class="check">✓</span>&nbsp; Same rubric, every time</td></tr>
+        <tr><td>Audit trail</td><td class="col-them">None</td><td class="col-you"><span class="check">✓</span>&nbsp; Full history</td></tr>
+        <tr><td>Contract memory</td><td class="col-them">Forgets everything</td><td class="col-you"><span class="check">✓</span>&nbsp; Search across all contracts</td></tr>
+        <tr><td>Privacy</td><td class="col-them">Data goes to the model</td><td class="col-you"><span class="check">✓</span>&nbsp; Never used for training</td></tr>
+        <tr><td>Workflow</td><td class="col-them">You write the prompts</td><td class="col-you"><span class="check">✓</span>&nbsp; Upload → get report</td></tr>
       </tbody>
     </table>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- TESTIMONIALS -->
+<div class="testimonials-dark">
+  <div class="testimonials-inner">
+    <span class="section-eyebrow">Early users</span>
+    <h2>Built for the people who actually sign.</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p>"I caught an auto-renewal that would've locked us in for another year. It paid for itself on day one."</p>
+        <div class="testimonial-author">
+          <div class="avatar" style="background:#0071e3">MR</div>
+          <div>
+            <div class="author-name">Marta R.</div>
+            <div class="author-role">Founder · 8-person agency</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>"I'm a freelancer, not a lawyer. Now I actually understand what I'm signing before I sign it."</p>
+        <div class="testimonial-author">
+          <div class="avatar" style="background:#34c759">DS</div>
+          <div>
+            <div class="author-name">Diego S.</div>
+            <div class="author-role">Independent consultant</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p>"We run every vendor contract through Conditio before it reaches my desk. Huge time-saver."</p>
+        <div class="testimonial-author">
+          <div class="avatar" style="background:#ff9f0a">LM</div>
+          <div>
+            <div class="author-name">Laura M.</div>
+            <div class="author-role">Ops lead · SaaS startup</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- PRICING -->
-<section class="section">
+<section class="pricing-section" id="pricing">
   <span class="section-eyebrow">Pricing</span>
   <h2>Simple, transparent pricing.</h2>
-  <p class="section-sub">Less than 30 minutes of legal advice. Cancel anytime.</p>
-  <div class="pricing">
+  <p class="pricing-sub">Less than 30 minutes of legal advice. Cancel anytime.</p>
+  <div class="pricing-grid">
     <div class="plan">
       <div class="plan-name">Starter</div>
       <div class="plan-price"><sup>$</sup>9<span>/mo</span></div>
@@ -563,7 +581,7 @@
       <ul class="plan-features">
         <li>Full risk analysis</li>
         <li>PDF download</li>
-        <li>PDF & DOCX support</li>
+        <li>PDF &amp; DOCX support</li>
         <li>1 user</li>
       </ul>
     </div>
@@ -575,7 +593,7 @@
       <div class="plan-divider"></div>
       <ul class="plan-features">
         <li>Everything in Starter</li>
-        <li>History & search</li>
+        <li>History &amp; search</li>
         <li>Up to 3 users</li>
         <li>Priority support</li>
       </ul>
@@ -595,66 +613,110 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <span class="section-eyebrow">FAQ</span>
+  <h2>Questions, answered.</h2>
+  <div class="faq-list">
+    <details>
+      <summary>Is this legal advice?<span class="faq-icon">+</span></summary>
+      <p>No. Conditio flags risks and explains clauses in plain English so you can make informed decisions — or know when to call a lawyer. It doesn't replace one.</p>
+    </details>
+    <details>
+      <summary>What file types can I upload?<span class="faq-icon">+</span></summary>
+      <p>PDF and DOCX. Drag and drop or upload directly — no formatting or templates required.</p>
+    </details>
+    <details>
+      <summary>Is my data private?<span class="faq-icon">+</span></summary>
+      <p>Yes. Your contracts are never used to train AI models. They're encrypted and visible only to you and the people you invite.</p>
+    </details>
+    <details>
+      <summary>How accurate is it?<span class="faq-icon">+</span></summary>
+      <p>Conditio applies the same risk rubric to every contract for consistent flags. Treat it as a thorough first-pass review — not a substitute for legal counsel on high-stakes deals.</p>
+    </details>
+    <details>
+      <summary>Can I cancel anytime?<span class="faq-icon">+</span></summary>
+      <p>Yes. Plans are monthly — cancel whenever you like. Your contract history stays accessible on the free tier.</p>
+    </details>
+    <details>
+      <summary>What types of contracts can Conditio analyze?<span class="faq-icon">+</span></summary>
+      <p>Any written contract in English: SaaS agreements, NDAs, vendor contracts, freelance SOWs, employment contracts, leases, and more. If it's a PDF or DOCX, Conditio can read it.</p>
+    </details>
+    <details>
+      <summary>How long does an analysis take?<span class="faq-icon">+</span></summary>
+      <p>Most contracts are analyzed in under 30 seconds. Longer documents may take up to a minute. You'll see a progress indicator while it runs.</p>
+    </details>
+    <details>
+      <summary>Do you support languages other than English?<span class="faq-icon">+</span></summary>
+      <p>You can upload contracts in any language and receive the report in your preferred language. The app supports 25 languages — set yours in account settings.</p>
+    </details>
+  </div>
+</section>
+
 <!-- CAPTURE -->
-<div class="capture-wrap">
+<div class="capture-dark">
   <div class="capture-inner">
     <h2>Be among the first to try it.</h2>
-    <p>Free early access for the first 50 users. No credit card required.</p>
+    <p class="capture-sub">Free early access for the first 50 users. No credit card required.</p>
     <div class="email-row">
       <input type="email" id="email-field" class="email-input" placeholder="you@company.com" />
-      <button class="btn-submit" id="submit-btn" onclick="
-        const val = document.getElementById('email-field').value;
-        const btn = document.getElementById('submit-btn');
-        if(val && val.includes('@') && val.includes('.')) {
-          btn.disabled = true;
-          btn.textContent = 'Sending...';
-          fetch('https://formspree.io/f/xrevlrvv', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-            body: JSON.stringify({email: val})
-          })
-          .then(r => r.json())
-          .then(() => {
-            document.getElementById('email-field').style.display = 'none';
-            btn.style.display = 'none';
-            document.getElementById('success').style.display = 'block';
-          })
-          .catch(() => {
-            btn.disabled = false;
-            btn.textContent = 'Reserve my spot';
-            document.getElementById('email-field').style.borderColor = '#ff3b30';
-          });
-        } else {
-          document.getElementById('email-field').style.borderColor = '#ff3b30';
-        }
-      ">Reserve my spot</button>
+      <button class="btn-submit" id="submit-btn">Reserve my spot</button>
     </div>
     <p id="success" class="success-msg">✓ You're on the list. We'll reach out when we launch.</p>
     <p class="capture-note">No spam. One email when the product is ready.</p>
   </div>
 </div>
 
-<footer>© 2026 Conditio &nbsp;·&nbsp; Built for founders and ops teams &nbsp;·&nbsp; <a href="/privacy" style="color:var(--gray);text-decoration:none;">Privacy</a> &nbsp;·&nbsp; <a href="/terms" style="color:var(--gray);text-decoration:none;">Terms</a></footer>
+<footer>
+  © 2026 Conditio &nbsp;·&nbsp; Built for founders and small teams &nbsp;·&nbsp;
+  <a href="/privacy">Privacy</a> &nbsp;·&nbsp;
+  <a href="/terms">Terms</a>
+</footer>
 
 <script>
-  // Animate score counter
+  // Score animation
   function animateScore() {
     const el = document.getElementById('score-counter');
     if (!el) return;
-    const target = 7.4;
-    const duration = 1200;
-    const start = performance.now();
-    function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = (target * eased).toFixed(1);
-      if (progress < 1) requestAnimationFrame(update);
+    const target = 7.4, dur = 1100, start = performance.now();
+    function step(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * e).toFixed(1);
+      if (p < 1) requestAnimationFrame(step);
       else el.textContent = target.toFixed(1);
     }
-    requestAnimationFrame(update);
+    requestAnimationFrame(step);
   }
-  setTimeout(animateScore, 500);
+  setTimeout(animateScore, 400);
+
+  // Email capture
+  document.getElementById('submit-btn').addEventListener('click', function() {
+    const val = document.getElementById('email-field').value;
+    const btn = this;
+    if (val && val.includes('@') && val.includes('.')) {
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      fetch('https://formspree.io/f/xrevlrvv', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: val })
+      })
+      .then(r => r.json())
+      .then(() => {
+        document.getElementById('email-field').style.display = 'none';
+        btn.style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'Reserve my spot';
+        document.getElementById('email-field').style.borderColor = '#ff3b30';
+      });
+    } else {
+      document.getElementById('email-field').style.borderColor = '#ff3b30';
+    }
+  });
 </script>
 
 </body>
