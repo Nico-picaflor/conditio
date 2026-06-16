@@ -164,7 +164,7 @@ footer a{color:inherit;text-decoration:none}
       <option value="nl">🇳🇱 NL</option>
       <option value="ar">🇸🇦 AR</option>
       <option value="bg">🇧🇬 BG</option>
-      <option value="ca">🏴 CA</option>
+      <option value="ca">CA</option>
       <option value="zh">🇨🇳 ZH</option>
       <option value="hr">🇭🇷 HR</option>
       <option value="cs">🇨🇿 CS</option>
@@ -268,7 +268,7 @@ function L(lang){
   ['tag','sub','mdate','mread','s1','s2','s3','h2a','p1','p2','cl1','ct1','h2b','db1h','db1l','db2h','db2l','db3h','db3l','db4h','db4l','h2c','p3','p4','h2d','p5','cl2','ct2','h2e','p6','p7','h2f','p8','p9','ctah','ctap','ctabtn','ncta'].forEach(id=>setText(id,t[id]||''));
   const chk=document.getElementById('chk');
   if(chk&&t.chk)chk.innerHTML=t.chk.map(i=>`<li>${i}</li>`).join('');
-  document.querySelectorAll('')`));
+  document.getElementById('nav-lang') && (document.getElementById('nav-lang').value = lang);
 }
 
 // Auto-detect language
