@@ -1,39 +1,399 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://conditio.org/</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://conditio.org/blog/article-1-auto-renewal.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/es/blog/article-1-auto-renewal.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/fr/blog/article-1-auto-renewal.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/de/blog/article-1-auto-renewal.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/it/blog/article-1-auto-renewal.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/pt/blog/article-1-auto-renewal.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-1-auto-renewal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-1-auto-renewal.html"/>
   </url>
   <url>
     <loc>https://conditio.org/blog/article-2-unlimited-liability.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/es/blog/article-2-unlimited-liability.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/fr/blog/article-2-unlimited-liability.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/de/blog/article-2-unlimited-liability.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/it/blog/article-2-unlimited-liability.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/pt/blog/article-2-unlimited-liability.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-2-unlimited-liability.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-2-unlimited-liability.html"/>
   </url>
   <url>
     <loc>https://conditio.org/blog/article-3-7-dangerous-clauses.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/es/blog/article-3-7-dangerous-clauses.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/fr/blog/article-3-7-dangerous-clauses.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/de/blog/article-3-7-dangerous-clauses.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/it/blog/article-3-7-dangerous-clauses.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/pt/blog/article-3-7-dangerous-clauses.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-3-7-dangerous-clauses.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-3-7-dangerous-clauses.html"/>
   </url>
   <url>
     <loc>https://conditio.org/blog/article-4-how-to-review-contracts.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/es/blog/article-4-how-to-review-contracts.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/fr/blog/article-4-how-to-review-contracts.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/de/blog/article-4-how-to-review-contracts.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/it/blog/article-4-how-to-review-contracts.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/pt/blog/article-4-how-to-review-contracts.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-4-how-to-review-contracts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-4-how-to-review-contracts.html"/>
   </url>
   <url>
     <loc>https://conditio.org/blog/article-5-smb-contract-mistakes.html</loc>
-    <lastmod>2026-07-09</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/es/blog/article-5-smb-contract-mistakes.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/fr/blog/article-5-smb-contract-mistakes.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/de/blog/article-5-smb-contract-mistakes.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/it/blog/article-5-smb-contract-mistakes.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+  </url>
+  <url>
+    <loc>https://conditio.org/pt/blog/article-5-smb-contract-mistakes.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://conditio.org/es/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://conditio.org/fr/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://conditio.org/de/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://conditio.org/it/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://conditio.org/pt/blog/article-5-smb-contract-mistakes.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://conditio.org/blog/article-5-smb-contract-mistakes.html"/>
   </url>
 </urlset>
