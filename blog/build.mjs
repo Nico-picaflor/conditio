@@ -34,6 +34,24 @@ const OG_LOCALE = { en: 'en_US', es: 'es_ES', fr: 'fr_FR', de: 'de_DE', it: 'it_
 const pathFor = (lang, slug) => (lang === 'en' ? `/blog/${slug}.html` : `/${lang}/blog/${slug}.html`);
 const ymd = (p) => new Date(statSync(p).mtime).toISOString().slice(0, 10);   // YYYY-MM-DD for <lastmod>
 
+// Injected into every page. Replaces the old `L(this.value)` switcher, which
+// swapped text client-side but never persisted — so a reload or navigation
+// reverted to the page's baked language. This persists the choice and, for a
+// language we publish as a physical page, navigates to its real URL so the
+// URL, baked content and canonical stay aligned.
+const SWITCH_FN = `function switchLang(lang){
+  try{localStorage.setItem('conditio_lang',lang);}catch(e){}
+  var PAGES=${JSON.stringify(EMIT)};
+  var base=String(lang).split('-')[0];
+  var slug=location.pathname.split('/').pop()||'';
+  if(PAGES.indexOf(base)!==-1 && slug){
+    var target=(base==='en'?'/blog/':'/'+base+'/blog/')+slug;
+    if(location.pathname!==target){location.href=target;return;}
+  }
+  L(lang);
+}
+`;
+
 // ── small helpers ──────────────────────────────────────────────────────────
 const escHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 const escAttr = (s) => escHtml(s).replace(/"/g, '&quot;');
@@ -118,6 +136,10 @@ function render(tpl, lang, slug, T) {
 
   let html = injectTranslations(tpl, T);
   html = html.replace(/<html[^>]*>/, `<html lang="${lang}"${lang === 'ar' ? ' dir="rtl"' : ''}>`);
+
+  // persistent, URL-aware language switcher (all pages)
+  html = html.replace('onchange="L(this.value)"', 'onchange="switchLang(this.value)"');
+  html = html.replace('const initLang', SWITCH_FN + 'const initLang');
 
   if (!isEn) {
     html = bakeBody(html, t);
