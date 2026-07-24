@@ -23,6 +23,7 @@ const BLOG = import.meta.dirname;          // …/conditio-landing/blog
 const ROOT = dirname(BLOG);                // …/conditio-landing
 const I18N = join(BLOG, 'i18n');
 const SITE = 'https://conditio.org';
+const GA_ID = 'G-BRQ3YC8L0Y';   // same GA4 property as the homepage
 
 // Languages we generate physical, SEO-indexed pages for. Only add a language
 // here once it is FULLY translated in the JSON (body + title + meta) — a page
@@ -39,7 +40,8 @@ const ymd = (p) => new Date(statSync(p).mtime).toISOString().slice(0, 10);   // 
 // reverted to the page's baked language. This persists the choice and, for a
 // language we publish as a physical page, navigates to its real URL so the
 // URL, baked content and canonical stay aligned.
-const SWITCH_FN = `function switchLang(lang){
+const SWITCH_FN = `/*i18n:switch:start*/
+function switchLang(lang){
   try{localStorage.setItem('conditio_lang',lang);}catch(e){}
   var PAGES=${JSON.stringify(EMIT)};
   var base=String(lang).split('-')[0];
@@ -50,7 +52,11 @@ const SWITCH_FN = `function switchLang(lang){
   }
   L(lang);
 }
+/*i18n:switch:end*/
 `;
+// Matches any prior switchLang injection — marked (current) or legacy
+// (marker-less, possibly duplicated) — so a rebuild replaces instead of piling on.
+const SWITCH_RE = /\n?(?:\/\*i18n:switch:start\*\/\s*)?function switchLang\(lang\)\{[\s\S]*?L\(lang\);\s*\}(?:\s*\/\*i18n:switch:end\*\/)?/g;
 
 // ── small helpers ──────────────────────────────────────────────────────────
 const escHtml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -111,6 +117,16 @@ function injectTranslations(html, T) {
   return html.slice(0, s) + 'const T=' + JSON.stringify(T) + ';\n' + html.slice(e);
 }
 
+// GA4 tag. The blog pages shipped without analytics (only the homepage had
+// it), so blog traffic was invisible in GA. Injected into every generated
+// page — same property as the homepage — between idempotent markers.
+const gaBlock = () => [
+  '<!-- i18n:ga:start -->',
+  `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA_ID}"></script>`,
+  '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag(\'js\',new Date());gtag(\'config\',\'' + GA_ID + '\');</script>',
+  '<!-- i18n:ga:end -->',
+].join('\n');
+
 function seoBlock(lang, slug, title, desc) {
   const lines = [
     '<!-- i18n:seo:start -->',
@@ -137,9 +153,15 @@ function render(tpl, lang, slug, T) {
   let html = injectTranslations(tpl, T);
   html = html.replace(/<html[^>]*>/, `<html lang="${lang}"${lang === 'ar' ? ' dir="rtl"' : ''}>`);
 
-  // persistent, URL-aware language switcher (all pages)
+  // persistent, URL-aware language switcher (all pages). Strip any prior copy
+  // first (idempotent) so repeated builds don't accumulate duplicate defs.
   html = html.replace('onchange="L(this.value)"', 'onchange="switchLang(this.value)"');
+  html = html.replace(SWITCH_RE, '');
   html = html.replace('const initLang', SWITCH_FN + 'const initLang');
+
+  // GA4 (strip any previous injection, then add once right after <head>)
+  html = html.replace(/\n?[ \t]*<!-- i18n:ga:start -->[\s\S]*?<!-- i18n:ga:end -->/, '');
+  html = html.replace('<head>', '<head>\n' + gaBlock());
 
   if (!isEn) {
     html = bakeBody(html, t);

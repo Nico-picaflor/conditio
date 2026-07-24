@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
+<!-- i18n:ga:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BRQ3YC8L0Y"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-BRQ3YC8L0Y');</script>
+<!-- i18n:ga:end -->
 <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>A Armadilha da Renovação Automática | Conditio</title>
 <meta name="description" content="As cláusulas de renovação automática estão enterradas em 69% dos contratos de software. A maioria descobre tarde demais."/>
@@ -300,6 +304,7 @@ function changeLang(lang) {
 // Override L to also update select
 const _L = L;
 // Init
+/*i18n:switch:start*/
 function switchLang(lang){
   try{localStorage.setItem('conditio_lang',lang);}catch(e){}
   var PAGES=["en","es","fr","de","it","pt"];
@@ -311,6 +316,7 @@ function switchLang(lang){
   }
   L(lang);
 }
+/*i18n:switch:end*/
 const initLang=(function(){var s=localStorage.getItem('conditio_lang');return (s&&T[s])?s:"pt";})();
 document.getElementById('nav-lang').value = initLang;
 L(initLang);
