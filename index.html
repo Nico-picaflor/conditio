@@ -65,6 +65,22 @@
     gtag('js', new Date());
     gtag('config', 'G-BRQ3YC8L0Y');
   </script>
+  <!-- CTA click tracking. Guarded so an absent/adblocked GA never blocks the
+       action — trackCta is a no-op then. -->
+  <script>
+    function trackCta(location){
+      if (typeof gtag === 'function') {
+        try { gtag('event', 'cta_click', { location: location }); } catch(e){}
+      }
+    }
+    // WAITLIST MODE: smooth-scroll to the waitlist form and focus the email.
+    function goWaitlist(){
+      var el = document.getElementById('waitlist');
+      if (el) { el.scrollIntoView({ behavior: 'smooth' }); }
+      var email = document.getElementById('wl-email');
+      if (email) { setTimeout(function(){ try { email.focus(); } catch(e){} }, 450); }
+    }
+  </script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -478,9 +494,37 @@
       .capture-dark { padding: 48px 20px; }
       footer { padding: 26px 20px; }
     }
+    /* ── WAITLIST MODE (early access) ─────────────────────────── */
+    .wl-banner { display:block; text-decoration:none; text-align:center;
+      background:#0071e3; color:#fff; font-size:13.5px; font-weight:500;
+      padding:9px 16px; line-height:1.4; }
+    .wl-banner:hover { background:#0077ed; }
+    .wl-banner span { color:#fff; }
+    .wl-banner .wl-banner-cta { text-decoration:underline; margin-left:6px; white-space:nowrap; }
+    .wl-form { display:flex; flex-direction:column; gap:12px; max-width:420px; margin:0 auto; }
+    .wl-form input, .wl-form select {
+      width:100%; font-family:inherit; font-size:15px; padding:13px 15px;
+      border-radius:12px; border:1px solid rgba(255,255,255,0.18);
+      background:rgba(255,255,255,0.06); color:#fff; }
+    .wl-form input::placeholder { color:rgba(255,255,255,0.45); }
+    .wl-form select { color:rgba(255,255,255,0.85); }
+    .wl-form select option { color:#1d1d1f; }
+    .wl-form input:focus, .wl-form select:focus { outline:none; border-color:#0071e3; }
+    .wl-form .btn-capture { width:100%; border:none; cursor:pointer; }
+    .wl-success { color:#4cd964; font-size:16px; font-weight:500; margin-top:8px; }
+    .plan-cta { display:block; width:100%; margin-top:18px; padding:11px 16px;
+      border:none; border-radius:12px; background:#0071e3; color:#fff;
+      font-family:inherit; font-size:14px; font-weight:500; cursor:pointer; }
+    .plan-cta:hover { background:#0077ed; }
+    .plan.featured .plan-cta { background:#fff; color:#0071e3; }
   </style>
 </head>
 <body>
+
+<!-- WAITLIST MODE: early-access banner -->
+<a href="#waitlist" class="wl-banner" id="wl-banner" onclick="try{trackCta('banner')}catch(e){}">
+  <span id="t-wl-banner">Conditio is in early access — leave your email and we'll tell you when we open.</span>
+</a>
 
 <!-- NAV -->
 <nav>
@@ -517,7 +561,8 @@
       <option value="pl">🇵🇱 PL</option>
       <option value="sl">🇸🇮 SL</option>
     </select>
-    <button class="nav-btn" id="t-nav-cta" onclick="window.location.href='https://app.conditio.org/login'">Try it free</button>
+    <!-- WAITLIST MODE: was onclick="window.location.href='https://app.conditio.org/login'" (restore to re-enable app) -->
+    <button class="nav-btn" id="t-nav-cta" data-app-href="https://app.conditio.org/login" onclick="try{trackCta('nav')}catch(e){};goWaitlist()">Join waitlist</button>
   </div>
 </nav>
 
@@ -529,7 +574,8 @@
       <h1 id="t-hero-h1">Know what you're<br>signing.<br><em id="t-hero-h1-em">Before you sign it.</em></h1>
       <p class="hero-sub" id="t-hero-sub">Upload any contract and get a risk score, flagged clauses, and a plain-English summary in seconds. No waiting.</p>
       <div class="hero-actions">
-        <button class="btn-primary" id="t-hero-cta1" onclick="window.location.href='https://app.conditio.org/login'">Try it free</button>
+        <!-- WAITLIST MODE: was onclick="window.location.href='https://app.conditio.org/login'" -->
+        <button class="btn-primary" id="t-hero-cta1" data-app-href="https://app.conditio.org/login" onclick="try{trackCta('hero')}catch(e){};goWaitlist()">Join waitlist</button>
         <a href="#how" class="btn-ghost" id="t-hero-cta2">See how it works</a>
       </div>
       <p class="hero-note" id="t-hero-note">No credit card required &nbsp;·&nbsp; First analysis free</p>
@@ -607,7 +653,8 @@
       </div>
       <!-- Footer -->
       <div class="rc-footer">
-        <button class="rc-btn-primary" id="rc-btn-view" onclick="window.location.href='https://app.conditio.org/login'">View full report</button>
+        <!-- WAITLIST MODE: was onclick="window.location.href='https://app.conditio.org/login'" -->
+        <button class="rc-btn-primary" id="rc-btn-view" data-app-href="https://app.conditio.org/login" onclick="try{trackCta('demo')}catch(e){};goWaitlist()">View full report</button>
         <button class="rc-btn-secondary" id="rc-btn-export">Export PDF</button>
       </div>
     </div>
@@ -741,9 +788,6 @@
       <div class="benefit-desc">All your data is stored and processed in the European Union — database in Ireland, application servers in eu-west. Nothing leaves Europe.</div>
     </div>
   </div>
-  <p style="text-align:center;margin-top:2rem;font-size:14px;color:#6e6e73;">
-    Read the full <a href="https://app.conditio.org/privacy" target="_blank" rel="noopener" style="color:#0071e3;text-decoration:none;">Privacy Policy →</a>
-  </p>
 </section>
 
 <!-- TESTIMONIALS -->
@@ -803,6 +847,7 @@
         <li id="t-p1-f3">PDF &amp; DOCX support</li>
         <li id="t-p1-f4">1 user</li>
       </ul>
+      <button class="plan-cta" id="t-p1-cta" onclick="try{trackCta('pricing_starter')}catch(e){};goWaitlist()">Join the waitlist</button>
     </div>
     <div class="plan featured">
       <div class="plan-badge" id="t-most-popular">Most popular</div>
@@ -816,6 +861,7 @@
         <li id="t-p2-f3">Up to 3 users</li>
         <li id="t-p2-f4">Priority support</li>
       </ul>
+      <button class="plan-cta" id="t-p2-cta" onclick="try{trackCta('pricing_pro')}catch(e){};goWaitlist()">Join the waitlist</button>
     </div>
     <div class="plan">
       <div class="plan-name">Business</div>
@@ -828,6 +874,7 @@
         <li id="t-p3-f3">Contract comparison</li>
         <li id="t-p3-f4">Contextual chat (AI) ✦</li>
       </ul>
+      <button class="plan-cta" id="t-p3-cta" onclick="try{trackCta('pricing_business')}catch(e){};goWaitlist()">Join the waitlist</button>
     </div>
   </div>
 </section>
@@ -880,20 +927,33 @@
   <div class="blog-grid" id="blog-grid"></div>
 </section>
 
-<!-- CAPTURE -->
-<div class="capture-dark">
+<!-- CAPTURE → WAITLIST MODE
+     Original CTA (restore to re-enable the app):
+     <a href="https://app.conditio.org/login" class="btn-capture" id="t-capture-cta">Get started →</a>
+-->
+<div class="capture-dark" id="waitlist">
   <div class="capture-inner">
-    <h2 id="t-capture-h2">Start analyzing your contracts today.</h2>
-    <p class="capture-sub" id="t-capture-sub">Risk score in seconds. Cancel anytime.</p>
-    <a href="https://app.conditio.org/login" class="btn-capture" id="t-capture-cta">Get started →</a>
-    <p class="capture-note" id="t-capture-note">No spam. One email when the product is ready.</p>
+    <h2 id="t-wl-h2">Join the waitlist</h2>
+    <p class="capture-sub" id="t-wl-sub">We'll email you the moment Conditio opens. No spam, one message.</p>
+    <form class="wl-form" id="wl-form" action="https://formspree.io/f/xrevlrvv" method="POST">
+      <input type="email" name="email" id="wl-email" required autocomplete="email" placeholder="you@company.com" aria-label="Email">
+      <select name="contract_type" id="wl-select" aria-label="Contract type">
+        <option value="" id="t-wl-opt0">What contracts do you review? (optional)</option>
+        <option value="employment" id="t-wl-opt1">Employment</option>
+        <option value="rental" id="t-wl-opt2">Rental / lease</option>
+        <option value="vendor" id="t-wl-opt3">Vendor / supplier</option>
+        <option value="customer" id="t-wl-opt4">Customer</option>
+        <option value="other" id="t-wl-opt5">Other</option>
+      </select>
+      <button type="submit" class="btn-capture" id="t-wl-submit">Join the waitlist</button>
+    </form>
+    <p class="wl-success" id="t-wl-success" role="status" style="display:none">✓ You're on the list. We'll email you when we open.</p>
+    <p class="capture-note" id="t-wl-note">No spam. One email when we open.</p>
   </div>
 </div>
 
 <footer>
   © 2026 Conditio &nbsp;·&nbsp; <span id="t-footer-tag">AI contract risk analysis</span> &nbsp;·&nbsp;
-  <a href="https://app.conditio.org/privacy" target="_blank" rel="noopener">Privacy</a> &nbsp;·&nbsp;
-  <a href="https://app.conditio.org/terms" target="_blank" rel="noopener">Terms</a> &nbsp;·&nbsp;
   <a href="mailto:support@conditio.org">support@conditio.org</a>
 </footer>
 
@@ -991,6 +1051,17 @@ function detectLang() {
   return 'en';
 }
 
+// WAITLIST MODE strings. Kept separate from i18n so waitlist mode can be
+// removed cleanly. Languages not listed fall back to English.
+const WL = {
+  en: { banner:"Conditio is in early access — leave your email and we'll tell you when we open.", h2:"Join the waitlist", sub:"We'll email you the moment Conditio opens. No spam, one message.", ph:"you@company.com", label:"What contracts do you review? (optional)", o1:"Employment", o2:"Rental / lease", o3:"Vendor / supplier", o4:"Customer", o5:"Other", submit:"Join the waitlist", success:"✓ You're on the list. We'll email you when we open.", note:"No spam. One email when we open.", cta:"Join waitlist" },
+  es: { banner:"Conditio está en acceso anticipado. Déjanos tu email y te avisamos al abrir.", h2:"Unite a la lista de espera", sub:"Te escribimos apenas Conditio abra. Sin spam, un solo email.", ph:"tu@empresa.com", label:"¿Qué tipo de contratos revisás? (opcional)", o1:"Laborales", o2:"Alquiler", o3:"Proveedores", o4:"Clientes", o5:"Otros", submit:"Unirme a la lista de espera", success:"✓ Estás en la lista. Te avisamos cuando abramos.", note:"Sin spam. Un solo email cuando abramos.", cta:"Unirme a la lista" },
+  fr: { banner:"Conditio est en accès anticipé. Laissez votre e-mail et nous vous préviendrons à l'ouverture.", h2:"Rejoignez la liste d'attente", sub:"Nous vous écrirons dès l'ouverture de Conditio. Pas de spam, un seul e-mail.", ph:"vous@entreprise.com", label:"Quels contrats examinez-vous ? (facultatif)", o1:"Travail / emploi", o2:"Location / bail", o3:"Fournisseurs", o4:"Clients", o5:"Autre", submit:"Rejoindre la liste d'attente", success:"✓ Vous êtes sur la liste. Nous vous écrirons à l'ouverture.", note:"Pas de spam. Un e-mail à l'ouverture.", cta:"Liste d'attente" },
+  de: { banner:"Conditio ist im Early Access. Hinterlassen Sie Ihre E-Mail und wir benachrichtigen Sie zum Start.", h2:"Auf die Warteliste", sub:"Wir schreiben Ihnen, sobald Conditio öffnet. Kein Spam, eine E-Mail.", ph:"sie@firma.com", label:"Welche Verträge prüfen Sie? (optional)", o1:"Arbeitsverträge", o2:"Miete / Pacht", o3:"Lieferanten", o4:"Kunden", o5:"Andere", submit:"Auf die Warteliste", success:"✓ Sie stehen auf der Liste. Wir melden uns zum Start.", note:"Kein Spam. Eine E-Mail zum Start.", cta:"Warteliste" },
+  it: { banner:"Conditio è in accesso anticipato. Lascia la tua email e ti avviseremo all'apertura.", h2:"Unisciti alla lista d'attesa", sub:"Ti scriveremo appena Conditio apre. Niente spam, una sola email.", ph:"tu@azienda.com", label:"Che contratti esamini? (facoltativo)", o1:"Lavoro", o2:"Affitto / locazione", o3:"Fornitori", o4:"Clienti", o5:"Altro", submit:"Unisciti alla lista d'attesa", success:"✓ Sei nella lista. Ti scriveremo all'apertura.", note:"Niente spam. Una email all'apertura.", cta:"Lista d'attesa" },
+  pt: { banner:"O Conditio está em acesso antecipado. Deixe o seu email e avisamos quando abrir.", h2:"Entre na lista de espera", sub:"Enviamos um email assim que o Conditio abrir. Sem spam, uma só mensagem.", ph:"voce@empresa.com", label:"Que contratos você revisa? (opcional)", o1:"Trabalhistas", o2:"Aluguel / arrendamento", o3:"Fornecedores", o4:"Clientes", o5:"Outros", submit:"Entrar na lista de espera", success:"✓ Você está na lista. Avisamos quando abrir.", note:"Sem spam. Um email quando abrir.", cta:"Lista de espera" }
+};
+
 function applyLang(lang) {
   const t = i18n[lang] || i18n['en'];
   document.documentElement.lang = lang.split('-')[0];
@@ -1051,6 +1122,18 @@ function applyLang(lang) {
   s('t-p3-f1', t.p3f1 || 'Everything in Business'); s('t-p3-f2', t.p3f2 || 'Unlimited users'); s('t-p3-f3', t.p3f3 || 'Contract comparison'); s('t-p3-f4', t.p3f4 || 'Google Drive integration');
   if(t.faq_q1) { ['t-faq-q1','t-faq-q2','t-faq-q3','t-faq-q4','t-faq-q5','t-faq-q6','t-faq-q7','t-faq-q8'].forEach((id,i)=>{ const el=document.getElementById(id); if(el){ const icon=el.querySelector('.faq-icon'); const txt=t['faq_q'+(i+1)]; if(txt&&icon){ el.childNodes[0].textContent=txt; } } }); }
   s('t-blog-eyebrow', t.blog_ey || 'From the blog'); s('t-blog-h2', t.blog_h2 || 'Learn before you sign.'); s('t-blog-sub', t.blog_sub || 'Practical guides on contract risk, dangerous clauses, and what most businesses miss.');
+
+  // ── WAITLIST MODE — apply waitlist strings (override the app CTAs) ──
+  const w = WL[lang] || WL[(lang || 'en').split('-')[0]] || WL.en;
+  s('t-wl-banner', w.banner);
+  s('t-wl-h2', w.h2); s('t-wl-sub', w.sub); s('t-wl-note', w.note);
+  s('t-wl-submit', w.submit); s('t-wl-success', w.success);
+  s('t-wl-opt0', w.label); s('t-wl-opt1', w.o1); s('t-wl-opt2', w.o2);
+  s('t-wl-opt3', w.o3); s('t-wl-opt4', w.o4); s('t-wl-opt5', w.o5);
+  s('t-nav-cta', w.cta); s('t-hero-cta1', w.cta);
+  s('t-p1-cta', w.submit); s('t-p2-cta', w.submit); s('t-p3-cta', w.submit);
+  const wlEmail = document.getElementById('wl-email');
+  if (wlEmail) wlEmail.setAttribute('placeholder', w.ph);
   s('t-footer-tag', t.footer_tag || 'AI contract risk analysis');
 
   // Demo card in hero
@@ -1162,6 +1245,35 @@ function changeLang(lang) {
 }
 
 // Init
+// WAITLIST MODE — submit to Formspree via fetch, show inline success, and
+// fire the GA4 waitlist_submit event. Only the (non-PII) contract_type is sent
+// to GA — never the email.
+(function(){
+  const form = document.getElementById('wl-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    const data = new FormData(form);
+    if (btn) btn.disabled = true;
+    fetch(form.action, { method:'POST', body:data, headers:{ 'Accept':'application/json' } })
+      .then(function(r){
+        if (r.ok) {
+          if (typeof gtag === 'function') {
+            try { gtag('event', 'waitlist_submit', { contract_type: (data.get('contract_type') || 'unspecified') }); } catch(_){}
+          }
+          form.style.display = 'none';
+          const ok = document.getElementById('t-wl-success');
+          if (ok) ok.style.display = 'block';
+        } else {
+          if (btn) btn.disabled = false;
+          alert('Something went wrong. Please try again.');
+        }
+      })
+      .catch(function(){ if (btn) btn.disabled = false; alert('Network error. Please try again.'); });
+  });
+})();
+
 applyLang(detectLang());
 </script>
 
